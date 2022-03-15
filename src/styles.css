@@ -47,7 +47,7 @@ p {
 
 .content {
   display: flex;
-  margin: 12px auto 32px;
+  margin: 12px auto 12px;
   padding: 0 16px;
   width: 90%;
   height: auto;

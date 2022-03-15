@@ -1,23 +1,68 @@
 
-<app-education></app-education>
-
-<app-projects></app-projects>
-
-<app-contact></app-contact>
-
 <div class="content" role="main">
- <div>
-    <app-header></app-header>
-</div>
-<div>
-  <app-acerca></app-acerca>
-</div>
-<div>
-    <app-experience></app-experience>
-</div>
-<div>
-    <app-skills></app-skills>
-</div>
+    <div>        
+        <app-header></app-header>
+    </div>
+    &nbsp;
+    &nbsp;
+    &nbsp;
 
+    <div>
+    <app-acerca></app-acerca>
+    </div>
+        <!-- borrar inicio-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    &nbsp;
+                   
+                    &nbsp;
+                    <h3>
+                        Experiencia
+                    </h3>
+                    &nbsp;
+
+                    <div>
+                        <app-experience></app-experience>
+                    </div>
+                    &nbsp;
+
+                    <h3>
+                        Educación
+                    </h3>
+                    &nbsp;
+
+                    <app-education></app-education>
+                    &nbsp;
+                    
+                    <h3>
+                        Hard &amp; Soft Skills
+                    </h3>
+                    &nbsp;
+
+                    <app-skills></app-skills>
+                    &nbsp;
+
+                    <h3>
+                        Proyectos
+                    </h3>
+                    <app-projects></app-projects>
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+        <!--borrar fin-->
+
+
+
+
+
+        
+    
+
+    
    
-<router-outlet></router-outlet>
+
+    <app-contact></app-contact>
+
+    <router-outlet></router-outlet>

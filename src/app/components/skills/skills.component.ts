@@ -7,14 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SkillsComponent implements OnInit {
   skillsSection = {
-    title: "What I do",
-    subTitle: "CRAZY FULL STACK DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK",
+    title: "What I do con esto? estoy en skills.component.ts",
+    subTitle: "soun un subtítulo estoy en skills.component.ts",
     skills: [
-      " Develop highly interactive Front end / User Interfaces for your web and mobile applications",
-      " Creating application backend in Node, Express & Flask",
-      " Progressive Web Applications ( PWA ) in normal and SPA Stacks",
-      " Integration of third party services such as Firebase/ Heroku/ AWS",
-      " Experience of working with Computer Vision and NLP projects"
+      " texto1 skills.component.ts",
+      " texto2 skills.component.ts",
+      " texto3 skills.component.ts",
+      " texto4 skills.component.ts",
+      " texto5 skills.component.ts",
+      " texto6 skills.component.ts",
     ]
   };
   constructor() { }
