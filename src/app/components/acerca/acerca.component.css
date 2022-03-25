@@ -1,5 +1,17 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
+#sizeacerca{
+  height: 250px;
+}
+
+.acerca{
+  background-image: url('src\assets\images\fondobanner.svg');
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+}
 #inferior{
   color: #FFF;
   background: #000;
@@ -64,12 +76,28 @@ section {
    
 }
 
+.nombre{
+  bottom: 10px;
+  left: 10px;
+  
+}
 
+.fotoperfil{
+  border-width: 0.5rem;
+    border-style: solid;
+    border-color: #f0f6fb;
+    border-radius: 50%;
+    -webkit-filter: grayscale(100%); /* para poner foto en blanco y negro Chrome, Safari, Opera */
+    filter: grayscale(100%);
+    margin-top: 20px;
+margin-left: 10px;
+}
 .perfil{
     position: unset;
     width: 20%;
     height: 20%;
     background-color: transparent;
+    
 }
 .arriba{
  position: relative;
@@ -90,16 +118,19 @@ padding-left: 15px;
 /*for animation text Vicente*/
 .line {
   position: relative;
- /* top: 50%;
+ /* top: 50%; margin: 0 auto;
 
  */
+ margin-top: 20px;
+ margin-bottom: 15px;
+ border-width: 15px;
   width: 16em;
-  margin: 0 auto;
+  color: #f0f6fb;
   border-right: 2px solid rgba(255, 255, 255, 0.75);
-  font-size: 100%;
-  text-align: center;
+  text-align: initial;
   white-space: nowrap;
-  overflow: hidden;transform: translateY(-130%) translateX(-120%);
+  overflow: hidden;
+  
 }
 
 /*Animation poner en steps la cantidad de caracteres*/
