@@ -79,7 +79,8 @@ section {
 .nombre{
   bottom: 10px;
   left: 10px;
-  
+  font-family: "Open Sans", sans-serif;
+  color: #272829;
 }
 
 .fotoperfil{
