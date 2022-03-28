@@ -386,3 +386,14 @@ a.btn-social,
     background-color: #6bd079;
 }
 
+.acerca{
+    background-image: url('src\assets\images\fondobanner.svg');
+    height: 300px;
+    width: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    }
+    #sizeacerca{
+        height: 250px;
+      }
