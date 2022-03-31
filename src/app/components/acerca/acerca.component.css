@@ -1,4 +1,8 @@
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+
+
+
 /*
 #sizeacerca{
   height: 250px;
@@ -94,6 +98,7 @@ section {
 margin-left: 10px;
 position: absolute;
 max-height: 150px;
+
 
 }
 .perfil{
