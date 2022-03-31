@@ -3,6 +3,18 @@
 /* uso: <i class="bi bi-star-fill"></i> */
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.margin{
+margin-top: 30px;
+}
+.titulos{
+font-size: 1.4rem;
+text-transform: uppercase;
+text-align: center;
+padding: 0.4rem 0;
+font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
+letter-spacing: normal;
+font-weight: bold;
+}
