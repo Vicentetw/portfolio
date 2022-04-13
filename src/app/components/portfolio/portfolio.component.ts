@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import data from 'src\assets\data\persona.json';
-import { ApicallService } from 'src/app/services/apicall.service';
+//import data from 'src\assets\data\persona.json';
+//import { PersonaService } from "src/app/services/persona.service";
 
 
 @Component({
@@ -15,7 +15,7 @@ export class PortfolioComponent implements OnInit {
   edu ='Educación';
   hys = 'Hard & Soft Skills';
   proy ='Proyectos';
-  constructor(public apiCall:ApicallService){
+  constructor( ){
     
   }
 

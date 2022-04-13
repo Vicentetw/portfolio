@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonaService } from 'src/app/services/persona.service';
 
 @Component({
   selector: 'app-contact',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-
-  constructor() { }
+//public persona= {nombre:"hardcoded", apellido:"Perrotta"}
+public persona: any
+  constructor(private service:PersonaService) {  }
 
   ngOnInit(): void {
+    this.service.obtenerUnaPersona().subscribe(data => {
+      this.persona=data;
+    })
+  }
   }
 
-}
+
