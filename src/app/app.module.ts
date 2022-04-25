@@ -17,10 +17,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from "@angular/forms";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material/input";
+//import { MatFormFieldModule } from "@angular/material/form-field";
+//import { MatInputModule } from "@angular/material/input";
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import {FormsModule} from '@angular/forms';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../environments/environment';
+import { AuthService } from './services/auth.service';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +47,7 @@ import {FormsModule} from '@angular/forms';
     LoginComponent,
     FooterComponent,
     PortfolioComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -44,11 +56,16 @@ import {FormsModule} from '@angular/forms';
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule
+   // MatFormFieldModule,
+   // MatInputModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [AuthService],
   //componente principal
   bootstrap: [AppComponent]
 })
