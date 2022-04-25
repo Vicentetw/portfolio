@@ -41,7 +41,7 @@ password:''
   get Password(){
     return this.form.get('password')
   }
-  ingresar(){
+  Ingresar(){
     console.log(this.usuario);
   }
 }
