@@ -28,6 +28,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { AuthService } from './services/auth.service';
+import { ModificaComponent } from './components/modifica/modifica.component';
 
 
 
@@ -46,7 +47,8 @@ import { AuthService } from './services/auth.service';
     SoftwareSkillComponent,
     LoginComponent,
     FooterComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    ModificaComponent
     
   ],
   imports: [
