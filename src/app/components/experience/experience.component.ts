@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ExperienceComponent implements OnInit {
   exp = 'Experiencia';
   
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
   }

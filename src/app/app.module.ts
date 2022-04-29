@@ -29,6 +29,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { AuthService } from './services/auth.service';
 import { ModificaComponent } from './components/modifica/modifica.component';
+import { EditButtonComponent } from './botones/edit-button/edit-button.component';
 
 
 
@@ -48,7 +49,8 @@ import { ModificaComponent } from './components/modifica/modifica.component';
     LoginComponent,
     FooterComponent,
     PortfolioComponent,
-    ModificaComponent
+    ModificaComponent,
+    EditButtonComponent
     
   ],
   imports: [

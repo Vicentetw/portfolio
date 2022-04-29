@@ -3,7 +3,7 @@ import { PersonaService } from 'src/app/services/persona.service';
 import { Persona } from 'src/app/entidades/persona';
 import { HttpClient } from '@angular/common/http';
 import { observable } from 'rxjs';
-
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -17,7 +17,7 @@ iam =' Full Stack Developer';
   public persona:any
   
 //constructor(private service:PersonaService){}   
-constructor(){}  
+constructor(public authService: AuthService){}  
 
 ngOnInit(): void {
 //this.service.obtenerDatosPersona(1).subscribe(data => {

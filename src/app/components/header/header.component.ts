@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HeaderComponent implements OnInit {
 
   constructor(private router: Router, public authService: AuthService) {
-    console.log("Estado de 2: " + this.authService.estaLogeado); 
+    console.log("USUARIO CONECTADO?: " + this.authService.estaLogeado); 
   
    }
 
@@ -30,4 +30,8 @@ logueado(){
 this.authService.estaLogeado;
 console.log("Estado de logueado: " + this.authService.estaLogeado); 
 }
+Salir(){
+  this.authService.SignOut();
+  console.log("Estado de logueado: " + this.authService.estaLogeado); 
+  }
 }

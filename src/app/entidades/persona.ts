@@ -3,23 +3,24 @@ export class Persona{
     nombre:string;
     apellido:string;
     dni:string;
-    nacionalidad:string;
-    full_name:string;
-    image:string;
-    position:string;
-    
+    id_nacionalidad:number;
+    id_experiencia:number;
+    id_skill:number;
+    id_proyectos:number;
+    fecha_nacimiento:string;
+        
 
-   constructor(id:number, nombre:string, apellido:string,dni:string, nacionalidad:string, full_name:string, image:string, position:string )
+   constructor(id:number, nombre:string, apellido:string,dni:string,id_nacionalidad:number, id_experiencia:number, id_skill:number, id_proyectos:number, fecha_nacimiento:string )
    { 
        this.id=id;
        this.nombre=nombre;
        this.apellido=apellido;
        this.dni=dni;
-       this.nacionalidad=nacionalidad;
-       this.full_name=full_name;
-       this.image=image;
-       this.position=position;
-       
+      this.id_nacionalidad=id_nacionalidad;
+      this.id_experiencia=id_experiencia;
+      this.id_skill=id_skill;
+      this.id_proyectos=id_proyectos;
+      this.fecha_nacimiento=fecha_nacimiento;
    }
 
 }

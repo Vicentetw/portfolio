@@ -17,15 +17,21 @@
       </svg>
     </a>
 
+    <div *ngIf="this.authService.estaLogeado">
+      <button    class="btn btn-success m-2" >Logueado</button>
+     </div>
+    
+     <div *ngIf="!this.authService.estaLogeado">
    <button    class="btn btn-light m-2" (click)="ruta();">Login</button>
+     </div>
   <div *ngIf="this.authService.estaLogeado">
-   <button    class="btn btn-light m-2" (click)="logueado();">Sign Out</button>
+   <button    class="btn btn-light m-2" (click)="Salir();">Sign Out</button>
   </div>
       <div></div>
       
       
-</div>
-<div class="container-fluid acerca sizeacerca" style="background-color: #6c63ff;"></div>
+</div >
+<div *ngIf="!this.authService.estaLogeado" class="container-fluid acerca sizeacerca" style="background-color: #6c63ff;"></div>
 <div class="container engranajes">
   <img class="engranaje" src="../../../assets/images/engranaje.png" alt="banner" />
   <img class="engranaje engranaje2" src="../../../assets/images/engranaje2.png" alt="banner" />
