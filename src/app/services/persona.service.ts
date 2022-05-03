@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpContext } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Persona } from '../entidades/persona';
+import { config } from '../data/Config';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ export class PersonaService {
   
   persona: any;
   cargada = false;
-  url:string="http://localhost:8080/persona";
+  url:string="https://floating-chamber-24100.herokuapp.com";
   constructor(private http:HttpClient) {
     console.log("El servicio está corriendo");
    }
@@ -28,7 +29,8 @@ export class PersonaService {
     return  this.http.put(this.url,persona);
   }
   public obtenerUnaPersona(){
-    return this.http.get("http://localhost:8080/persona/1")
+   return this.http.get<any>(config.baseUrl + "persona/1")
+    // return this.http.get("http://localhost:8080/persona/1")
     //el get devuelve un obserbable
     //y el service me va a devolver un observable
   }

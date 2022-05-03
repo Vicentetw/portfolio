@@ -8,7 +8,8 @@ import { config } from '../data/Config';
   providedIn: 'root'
 })
 export class EducacionService {
-
+  educacion: any;
+  url:string="https://floating-chamber-24100.herokuapp.com";
   constructor(private http: HttpClient) { }
 
   obtenerDatosEducacion(): Observable<Educacion[]> {
