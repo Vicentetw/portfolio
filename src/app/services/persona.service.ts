@@ -3,6 +3,7 @@ import { HttpClient, HttpContext } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Persona } from '../entidades/persona';
 import { config } from '../data/Config';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -10,26 +11,27 @@ import { config } from '../data/Config';
 })
 export class PersonaService {
   
+  private apiHerokuUrl = environment.apiUrl;
   persona: any;
   cargada = false;
   url:string="https://floating-chamber-24100.herokuapp.com";
+  
   constructor(private http:HttpClient) {
     console.log("El servicio está corriendo");
    }
 
-  obtenerDatosPersona(id:number):Observable<Persona>{
+  public obtenerDatosPersona(id:number):Observable<Persona>{
    return this.http.get<Persona>(this.url+"/"+id);
   }
-
-  obtenerDatosEducacion():Observable<any>{
-    return this.http.get('./assets/data/educacion.json');
+  public getPersonas(): Observable<Persona[]> {
+    return this.http.get<Persona[]>(`${this.apiHerokuUrl}/personas/all`);
   }
 
-  editarDatosPersona(persona:Persona):Observable<any>{
+  public editarDatosPersona(persona:Persona):Observable<any>{
     return  this.http.put(this.url,persona);
   }
   public obtenerUnaPersona(){
-   return this.http.get<any>(config.baseUrl + "persona/1")
+   return this.http.get<any>(this.apiHerokuUrl + "persona/1")
     // return this.http.get("http://localhost:8080/persona/1")
     //el get devuelve un obserbable
     //y el service me va a devolver un observable

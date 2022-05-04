@@ -7,18 +7,17 @@ import { EtidadEducacion } from 'src/app/entidades/educacion';
 @Component({
   selector: 'app-education',
   templateUrl: './education.component.html',
-  styleUrls: ['./education.component.css']
+  styleUrls: ['./education.component.css'],
+  providers:[EducacionService]
 })
 export class EducationComponent implements OnInit {
   educacionList: Educacion[] = [];
-  isUserLogged: Boolean = false;
   educationForm: FormGroup;
   public educacion: any
   constructor(
     public authService: AuthService,
     private formBuilder: FormBuilder,
-    private educacionService:EducacionService,
-    private service:EducacionService
+    private educacionService:EducacionService
     
     ) { 
       this.educationForm = this.formBuilder.group({
