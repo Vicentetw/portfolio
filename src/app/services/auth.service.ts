@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   userData: any; // Save logged in user data
+  midifica:any;
     constructor(
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
@@ -44,7 +45,7 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['arFm2225txrz2532kkkdsdieujdls3#23345dnesdjy2j430slk9sk3d']);
+          const modifica = this.router.navigate(['arFm2225txrz2532kkkdsdieujdls3#23345dnesdjy2j430slk9sk3d']);
         });
         this.SetUserData(result.user);
       })
@@ -89,13 +90,11 @@ export class AuthService {
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
     return user !== null && user.emailVerified !== false ? true : false;
-    console.log (user);
   }
   // Returns true when user is looged in and email is verified
   get estaLogeado(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
     return user !== null ? true : false;
-    console.log (user);
   }
   // Sign in with Google
   GoogleAuth() {

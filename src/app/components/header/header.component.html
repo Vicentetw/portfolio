@@ -1,3 +1,4 @@
+
 <div class="toolbar" role="banner">
   <img width="80" alt="Argentina Programa" src="\assets\images\APLogo-20-20.png" />
 
@@ -22,10 +23,10 @@
      </div>
     
      <div *ngIf="!this.authService.estaLogeado">
-   <button    class="btn btn-light m-2" (click)="ruta();">Login</button>
+   <button    class="btn btn-light m-2" (click)="ruta()">Login</button>
      </div>
   <div *ngIf="this.authService.estaLogeado">
-   <button    class="btn btn-light m-2" (click)="Salir();">Sign Out</button>
+   <button    class="btn btn-light m-2" (click)="Salir()">Sign Out</button>
   </div>
       <div></div>
       

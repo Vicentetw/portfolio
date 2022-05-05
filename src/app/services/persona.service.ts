@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpContext } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Persona } from '../entidades/persona';
-import { config } from '../data/Config';
 import { environment } from 'src/environments/environment';
 
 

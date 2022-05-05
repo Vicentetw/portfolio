@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SkillsComponent implements OnInit {
   skillsSection = {
-    title: "What I do con esto? estoy en skills.component.ts",
-    subTitle: "soun un subtítulo estoy en skills.component.ts",
+    title: "Skills",
+    subTitle: "subtitulo",
     skills: [
       " texto1 skills.component.ts",
       " texto2 skills.component.ts",

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonaService } from 'src/app/services/persona.service';
 import { LoginComponent } from 'src/app/login/login.component';
-import { config } from 'src/app/data/Config';
 import { Config } from 'firebase/auth';
 @Component({
   selector: 'app-contact',

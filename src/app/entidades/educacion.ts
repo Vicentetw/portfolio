@@ -1,4 +1,4 @@
-export class EtidadEducacion{
+export class Educacion{
     id:number;
     fechaInicio:string;
     fechaEgreso:string;

@@ -11,12 +11,12 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: 'portfolio', component: PortfolioComponent},
+  {path: 'modifica', component: ModificaComponent},
   {path: 'login', component: LoginComponent},
   {path: 'arFm2225txrz2532kkkdsdieujdls3#23345dnesdjy2j430slk9sk3d', component: ModificaComponent},
   {path: '',redirectTo:'login',pathMatch:'full'},
-  
- {path: ' ', component: Error404Component },
- {path: '**', component: Error404Component},
+  {path: ' ', component: Error404Component },
+  {path: '**', component: Error404Component},
  
  
 

@@ -1,37 +1,128 @@
 
-<table class="table">
+<!-- ======= Services Section ======= -->
+<section id="services" class="services-mf pt-5 route">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="title-box text-center">
+            <h1>
+  
+            Educación
+  
+            </h1>
+            <app-edit-button></app-edit-button>
+            <div class="line-mf"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4"  *ngFor="let e of educacion">
+          <div class="service-box">
+            <div class="service-ico">
+              <span class="ico-circle"><i class="fondo"></i></span>
+            </div>
+            <div >
+              <h2 >{{e.titulo}}</h2>
+              <h3 class="text-muted">{{e.institucion}}</h3>
+              <h4 class="text-muted">{{e.fechaEgreso}}</h4>
+              
+            </div>
+          </div>
+        </div>
+    </div>
+  
+           
+    </div>
+  </section><!-- End Services Section -->
+  
+  <table class="table">
+  
     <thead>
-        <tr>
-            <th>
-                nada
-            </th>
-            <th>
-                nada
-            </th>
-            <th>
-                Payment Taken
-            </th>
-            <th>
-                Status
-            </th>
-        </tr>
+      <tr>
+        <th>
+          id
+        </th>
+        <th>
+          Lugar
+        </th>
+        <th>
+          Fecha inicio
+        </th>
+        <th>
+          hasta
+        </th>
+      </tr>
     </thead>
     <tbody>
-        <tr >
-            <td>
-                adfad
-            </td>
-            <td>
-                TB - Monthly
-            </td>
-            <td>
-                01/04/2012
-            </td>
-            <td>
-                nada
-            </td>
-        </tr>
-        
+      <tr>
+        <td>
+          1
+        </td>
+        <td>
+          TB - Monthly
+        </td>
+        <td>
+          01/04/2012
+        </td>
+        <td>
+          01/04/2012
+        </td>
+      </tr>
+      <tr class="table-active">
+        <td>
+          1
+        </td>
+        <td>
+          TB - Monthly
+        </td>
+        <td>
+          01/04/2012
+        </td>
+        <td>
+          <span>01/04/2012</span>
+        </td>
+      </tr>
+      <tr class="table-success">
+        <td>
+          2
+        </td>
+        <td>
+          TB - Monthly
+        </td>
+        <td>
+          02/04/2012
+        </td>
+        <td>
+          <span>01/04/2012</span>
+        </td>
+      </tr>
+      <tr class="table-warning">
+        <td>
+          3
+        </td>
+        <td>
+          TB - Monthly
+        </td>
+        <td>
+          03/04/2012
+        </td>
+        <td>
+          <span>01/04/2012</span>
+        </td>
+      </tr>
+      <tr class="table-danger">
+        <td>
+          4
+        </td>
+        <td>
+          TB - Monthly
+        </td>
+        <td>
+          04/04/2012
+        </td>
+        <td>
+          <span>01/04/2012</span>
+        </td>
+      </tr>
     </tbody>
-</table>
--->
+  </table>
