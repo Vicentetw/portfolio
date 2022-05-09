@@ -10,15 +10,14 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { EducationComponent } from './components/education/education.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { SoftwareSkillComponent } from './components/skills/software-skill/software-skill.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from "@angular/forms";
-//import { MatFormFieldModule } from "@angular/material/form-field";
-//import { MatInputModule } from "@angular/material/input";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import {FormsModule} from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -45,7 +44,6 @@ import { EditButtonComponent } from './botones/edit-button/edit-button.component
     ProjectsComponent,
     EducationComponent,
     ContactComponent,
-    SoftwareSkillComponent,
     LoginComponent,
     FooterComponent,
     PortfolioComponent,
@@ -60,8 +58,8 @@ import { EditButtonComponent } from './botones/edit-button/edit-button.component
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-   // MatFormFieldModule,
-   // MatInputModule,
+    MatFormFieldModule,
+    MatInputModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,

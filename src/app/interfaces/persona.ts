@@ -8,4 +8,5 @@ export interface Persona {
     id_skill: number;
     id_proyectos: number;
     fecha_nacimiento: string;
+    id_educacion:number;
   }
