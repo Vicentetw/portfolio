@@ -1,11 +1,13 @@
-<div class="container">
+<section id="services" class="services-mf pt-5 route">
 
+<div class="container" >
+<div  class="service-box">
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-sm-12">
     <div class="title-box text-center">
-      <h1 class="titulos">
+      <h1>
 
-       html
+       Skills
 
       </h1>
       
@@ -13,21 +15,26 @@
     </div>
   </div>
 </div>
-
+</div>
 
   <div class="row">
-        <div class="col-md-4 ">
-            
-          <div class="progress blue">
+        <div class=" col-md-4  " *ngFor="let s of skill">
+          <div class="service-box"> 
+            <h2 class="texto">{{this.s.nombre_skill}}</h2>
+          <div class="progress blue" >
               <span class="progress-left">
                   <span class="progress-bar"></span>
               </span>
               <span class="progress-right">
                   <span class="progress-bar"></span>
               </span>
-              <div class="progress-value">90%</div>
+              <div class="progress-value">{{this.s.porcentaje_skill}}%</div>
           </div>
+      </div>
+
       </div>
       
   </div>
+
 </div>
+</section>
