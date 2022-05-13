@@ -2,8 +2,9 @@
 /* import icons of bootstrap, hay que importarlo en el css despuès de instalarlo con npm i bootstrap-icons --save */
 /* uso: <i class="bi bi-star-fill"></i> */
 @import "~bootstrap-icons/font/bootstrap-icons.css";
-/* You can add global styles to this file, and also import other style files */
-
+/*@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+ You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap";
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .margin{

@@ -17,26 +17,26 @@ export class EducacionService {
   constructor(private http: HttpClient) { }
 
   obtenerDatosEducacion(): Observable<Educacion[]> {
-    return this.http.get<Educacion[]>(`${this.apiHerokuUrl}educacion/todas`);
+    return this.http.get<Educacion[]>(`${this.apiHerokuUrl}educacion/all`);
   }
 
-  guardarNuevaEducacion(educacion:Educacion): Observable<Educacion> {
-    return this.http.post<Educacion>(this.apiHerokuUrl + "educacion/create", educacion);
+  addEducacion(educacion:Educacion): Observable<Educacion> {
+    return this.http.post<Educacion>(this.apiHerokuUrl + "educacion", educacion);
   }
 
-  modificarEducacion(educacion: Educacion): Observable<any> {
-    return this.http.put<any>(this.apiHerokuUrl + "educacion/update", educacion);
+  modificarEducacion(educacion: Educacion): Observable<Educacion> {
+    return this.http.put<Educacion>(this.apiHerokuUrl + "modifica/educacion", educacion);
   }
 
   borrarEducacion(id: number): Observable<any> {
     return this.http.delete<any>(this.apiHerokuUrl + "educacion/" + id);
   }
   public getEducacion(): Observable<Educacion[]> {
-    return this.http.get<Educacion[]>(`${this.apiHerokuUrl}/educacion/all`);
+    return this.http.get<Educacion[]>(`${this.apiHerokuUrl}educacion/all`);
   }
  
-  public editarDatosEducacion(educacion:Educacion):Observable<any>{
-    return  this.http.put(this.url,educacion);
+  public editarDatosEducacion(educacion:Educacion):Observable<Educacion>{
+    return  this.http.put<Educacion>(this.url,educacion);
   }
   public obtenerUnaEducacion(){
     return this.http.get<any>(this.apiHerokuUrl + "educacion/1")
