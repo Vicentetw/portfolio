@@ -53,7 +53,7 @@
         </div>
         <div class="modal-body">
           <form #addForm="ngForm" (ngSubmit)="onAddEducacion(addForm)">
-  
+  <!--
             <div class="form-group">
               <div class="input-group">
                 <label for="fechaInicio">Fecha Inicio</label><br>
@@ -69,21 +69,24 @@
             <div class="form-group">
               <div class="input-group">
                 <label for="fechaEgreso">Fecha Egreso </label><br>
-                <input ngModel type="text" name="fechaEgreso" class="form-control" ngbDatepicker #c="ngbDatepicker">
+                <input ngModel type="text" id="fechaEgreso" name="fechaEgreso" class="form-control" ngbDatepicker #c="ngbDatepicker">
                 <div class="input-group-append">
                   <button class="btn btn-outline-primary calendar mt-2" (click)="c.toggle()" type="button">Cagar Fecha
                     egreso</button>
                 </div>
               </div>
             </div>
-
-
+          -->
+          <label for="fechaInicio">Fecha Inicio</label><br>
+          <input ngModel type="text" id="fechaInicio" name="fechaInicio" placeholder="yyyy-mm-dd"   class="form-control">
+          <label for="fechaEgreso">Fecha egreso</label><br>
+          <input ngModel type="text" id="fechaEgreso" name="fechaEgreso" placeholder="yyyy-mm-dd" class="form-control">
             <label for="titulo">Título</label><br>
-            <input ngModel type="text" name="titulo" class="form-control">
+            <input ngModel type="text" id="titulo" name="titulo" class="form-control">
             <label for="institucion">Institucion</label><br>
-            <input ngModel type="text" name="institucion" class="form-control">
+            <input ngModel type="text" id="institucion" name="institucion" class="form-control">
             <label for="idPersona">Id Persona</label><br>
-            <input ngModel type="text" name="Id" class="form-control">
+            <input ngModel type="number" name="idPersona" id="idPersona" class="form-control">
             <div class="modal-footer">
               <button type="button" id="add-educacion-modal" class="btn btn-primary"
                 data-dismiss="modal">Cancelar</button>
@@ -114,17 +117,18 @@
         </div>
         <div class="modal-body">
           <form #editForm="ngForm">
-           
+            <label type="hidden" for="id">ID</label><br>
+            <input type="hidden" ngModel="{{editEducacion?.id}} " type="number" id="id" name="id" class="form-control">
             <label for="fechaInicio">Fecha inicio</label><br>
-            <input ngModel="{{editEducacion?.fechaInicio}} " type="text" name="fehcaInicio" class="form-control">
+            <input ngModel="{{editEducacion?.fechaInicio}} " type="text" id="fechaInicio" name="fechaInicio" class="form-control">
             <label for="fechaEgreso">Fecha egreso</label><br>
-            <input ngModel="{{editEducacion?.fechaEgreso}}" type="text" name="FechaEgreso" class="form-control">
+            <input ngModel="{{editEducacion?.fechaEgreso}}" type="text" id="fechaEgreso" name="fechaEgreso" class="form-control">
             <label for="titulo">Título</label><br>
-            <input ngModel="{{editEducacion?.titulo}}" type="text" name="titulo" class="form-control">
+            <input ngModel="{{editEducacion?.titulo}}" type="text" id="titulo" name="titulo" class="form-control">
             <label for="institucion">Institucion</label><br>
-            <input ngModel="{{editEducacion?.institucion}}" type="text" name="institucion" class="form-control">
+            <input ngModel="{{editEducacion?.institucion}}" type="text" id="institucion" name="institucion" class="form-control">
             <label for="idPersona">Id Persona</label><br>
-            <input ngModel="{{editEducacion?.idPersona}}" type="number" name="idPersona" class="form-control">
+            <input ngModel="{{editEducacion?.idPersona}}" type="number" id="idPersona" name="idPersona" class="form-control">
             <input type="hidden" name="id" ngModel="{{editEducacion?.id}} "><br>
             <div class="modal-footer">
               <button id="update-educacion-modal" type="button" class="btn" data-dismiss="modal">Cancelar</button>
