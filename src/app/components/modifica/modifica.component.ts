@@ -28,8 +28,8 @@ export class ModificaComponent implements OnInit {
    /* this.educacionForm = FormGroup.group(
       {
       id: [''],
-      fechaInicio: [''],
-      fechaEgreso: ['', Validators.required],
+      fecha_inicio: [''],
+      fecha_egreso: ['', Validators.required],
       titulo: ['', Validators.required],
       institucion: ['', Validators.required],
       idPersona: ['', Validators.required],
@@ -97,8 +97,8 @@ export class ModificaComponent implements OnInit {
   private clearForm() {
     this.educationForm.setValue({
       id: '',
-      fechaInicio: '',
-      fechaEgreso: '',
+      fecha_inicio: '',
+      fecha_egreso: '',
       titulo:'',
       institucion:'',
       idPersona: ''
@@ -109,8 +109,8 @@ export class ModificaComponent implements OnInit {
   loadForm(educacion: Educacion) {
     this.educationForm.setValue({
       id: educacion.id,
-      fechaInicio: educacion.fechaInicio,
-      fechaEgreso: educacion.fechaEgreso,
+      fecha_inicio: educacion.fecha_inicio,
+      fecha_egreso: educacion.fecha_egreso,
       titulo: educacion.titulo,
       institucion: educacion.institucion,
       idPersona:educacion.idPersona

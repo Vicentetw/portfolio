@@ -16,8 +16,8 @@
                 <br>
                 <br> {{e.institucion}}
                 <br>
-                <br> {{e.fechaEgreso}}
-                <br> {{e.fechaInicio}}
+                <br> {{e.fecha_egreso}}
+                <br> {{e.fecha_inicio}}
 
 
               </p>
@@ -56,8 +56,8 @@
   <!--
             <div class="form-group">
               <div class="input-group">
-                <label for="fechaInicio">Fecha Inicio</label><br>
-                <input ngModel type="text" name="fechaInicio" id="fechaInicio" class="form-control" ngbDatepicker #d="ngbDatepicker">
+                <label for="fecha_inicio">Fecha Inicio</label><br>
+                <input ngModel type="text" name="fecha_inicio" id="fecha_inicio" class="form-control" ngbDatepicker #d="ngbDatepicker">
                 <div class="input-group-append">
                   <button class="btn btn-outline-primary calendar mt-2" (click)="d.toggle()" type="button">Cagar Fecha
                     inicio</button>
@@ -68,8 +68,8 @@
 
             <div class="form-group">
               <div class="input-group">
-                <label for="fechaEgreso">Fecha Egreso </label><br>
-                <input ngModel type="text" id="fechaEgreso" name="fechaEgreso" class="form-control" ngbDatepicker #c="ngbDatepicker">
+                <label for="fecha_egreso">Fecha Egreso </label><br>
+                <input ngModel type="text" id="fecha_egreso" name="fecha_egreso" class="form-control" ngbDatepicker #c="ngbDatepicker">
                 <div class="input-group-append">
                   <button class="btn btn-outline-primary calendar mt-2" (click)="c.toggle()" type="button">Cagar Fecha
                     egreso</button>
@@ -77,10 +77,10 @@
               </div>
             </div>
           -->
-          <label for="fechaInicio">Fecha Inicio</label><br>
-          <input ngModel type="text" id="fechaInicio" name="fechaInicio" placeholder="yyyy-mm-dd"   class="form-control">
-          <label for="fechaEgreso">Fecha egreso</label><br>
-          <input ngModel type="text" id="fechaEgreso" name="fechaEgreso" placeholder="yyyy-mm-dd" class="form-control">
+          <label for="fecha_inicio">Fecha Inicio</label><br>
+          <input ngModel type="text" id="fecha_inicio" name="fecha_inicio" placeholder="yyyy-mm-dd"   class="form-control">
+          <label for="fecha_egreso">Fecha egreso</label><br>
+          <input ngModel type="text" id="fecha_egreso" name="fecha_egreso" placeholder="yyyy-mm-dd" class="form-control">
             <label for="titulo">Título</label><br>
             <input ngModel type="text" id="titulo" name="titulo" class="form-control">
             <label for="institucion">Institucion</label><br>
@@ -119,10 +119,10 @@
           <form #editForm="ngForm">
             <label type="hidden" for="id">ID</label><br>
             <input type="hidden" ngModel="{{editEducacion?.id}} " type="number" id="id" name="id" class="form-control">
-            <label for="fechaInicio">Fecha inicio</label><br>
-            <input ngModel="{{editEducacion?.fechaInicio}} " type="text" id="fechaInicio" name="fechaInicio" class="form-control">
-            <label for="fechaEgreso">Fecha egreso</label><br>
-            <input ngModel="{{editEducacion?.fechaEgreso}}" type="text" id="fechaEgreso" name="fechaEgreso" class="form-control">
+            <label for="fecha_inicio">Fecha inicio</label><br>
+            <input ngModel="{{editEducacion?.fecha_inicio}} " type="text" id="fecha_inicio" name="fecha_inicio" class="form-control">
+            <label for="fecha_egreso">Fecha egreso</label><br>
+            <input ngModel="{{editEducacion?.fecha_egreso}}" type="text" id="fecha_egreso" name="fecha_egreso" class="form-control">
             <label for="titulo">Título</label><br>
             <input ngModel="{{editEducacion?.titulo}}" type="text" id="titulo" name="titulo" class="form-control">
             <label for="institucion">Institucion</label><br>
