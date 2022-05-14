@@ -1,12 +1,12 @@
 <app-header class="image"></app-header>
 
-<div>
+<div *ngIf="this.isUserLogged">
   <div>
     <div class="contenido" id="main-container">
       <div id="educacion">
         <h4 class="educacion"> Educacion
-          <button class="btn btn-success" (click)="onOpenModal(null!,'add')" *ngIf="isUserLogged"><span
-              class="glyphicon glyphicon-pencil"></span> Agregar</button>
+          <button class="btn btn-success" (click)="onOpenModal(null!,'add')" *ngIf="this.isUserLogged"><span
+              class="btn-primary"></span> Agregar</button>
         </h4>
         <div class="container">
           <div class="columnas" *ngFor="let e of educacionList">
@@ -21,7 +21,7 @@
 
 
               </p>
-              <span id="eliminar-editar-educacion" *ngIf="isUserLogged">
+              <span id="eliminar-editar-educacion" *ngIf="this.isUserLogged">
                 <button type="button" class="botones_editar_borrar" (click)="onOpenModal(e,'edit')">
                   <i class="fa-solid fa-pen"></i>Editar
                 </button>
@@ -43,13 +43,13 @@
   <!-- Modal para agregar Experiencia -->
   <div class="modal fade" id="addEducacionModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
     aria-labelledby="addExperienciaModal" aria-hidden="true">
-    <div class="modal-dialog-centered">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Agregar Educacion</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="false">&times;</span>
-          </button>
+            <span aria-hidden="true">&times;</span>
+                    </button>
         </div>
         <div class="modal-body">
           <form #addForm="ngForm" (ngSubmit)="onAddEducacion(addForm)">
@@ -77,6 +77,8 @@
               </div>
             </div>
           -->
+          <label for="id"  type="hidden">Id</label><br>
+          <input ngModel type="number hidden" id="id" name="id"    class="form-control">
           <label for="fecha_inicio">Fecha Inicio</label><br>
           <input ngModel type="text" id="fecha_inicio" name="fecha_inicio" placeholder="yyyy-mm-dd"   class="form-control">
           <label for="fecha_egreso">Fecha egreso</label><br>
@@ -162,8 +164,8 @@
         <div class="modal-body">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn" data-dismiss="modal">No</button>
-          <button (click)="onDeleteEducacion(deleteEducacion.id)" type="button" class="btn"
+          <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+          <button (click)="onDeleteEducacion(deleteEducacion.id)" type="button" class="btn btn-primary"
             data-dismiss="modal">Sí</button>
         </div>
       </div>
