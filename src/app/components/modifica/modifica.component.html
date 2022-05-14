@@ -1,391 +1,169 @@
 <app-header class="image"></app-header>
 
 <div>
-<div class="fondo">
-  <div class="contenido" id="main-container">
-      <div id="estudios" >
-          <h4 class="estudios"> Estudios y Capacitaciones <button type="button" class="botones_contenido" (click)="onOpenModal(null!,'add')" *ngIf="isUserLogged">
-              <i class="fa-solid fa-plus"></i>
+  <div>
+    <div class="contenido" id="main-container">
+      <div id="educacion">
+        <h4 class="educacion"> Educacion
+          <button class="btn btn-success" (click)="onOpenModal(null!,'add')" *ngIf="isUserLogged"><span
+              class="glyphicon glyphicon-pencil"></span> Agregar</button>
+        </h4>
+        <div class="container">
+          <div class="columnas" *ngFor="let e of educacionList">
+            <div class="datoseducacion">
+
+              <p><span class="titulo">{{e.titulo}}</span>
+                <br>
+                <br> {{e.institucion}}
+                <br>
+                <br> {{e.fechaEgreso}}
+                <br> {{e.fechaInicio}}
+
+
+              </p>
+              <span id="eliminar-editar-educacion" *ngIf="isUserLogged">
+                <button type="button" class="botones_editar_borrar" (click)="onOpenModal(e,'edit')">
+                  <i class="fa-solid fa-pen"></i>Editar
+                </button>
+                <button (click)="onOpenModal(e,'delete')" type="button" class="botones_editar_borrar">
+                  <i class="fa-solid fa-eraser"></i> borrar
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Modal para agregar Experiencia -->
+  <div class="modal fade" id="addEducacionModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="addExperienciaModal" aria-hidden="true">
+    <div class="modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Agregar Educacion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="false">&times;</span>
           </button>
-          </h4>
-          <div class="container">
-              <div class="columnas" *ngFor="let est of educacionList">
-                  <div class="datosestudios">
-                      
-                      <p><span class="titulo">{{est.titulo}}</span><br> {{est.fechaInicio}} - {{est.fechaEgreso}} </p>
-                      <span id="eliminar-editar-estudios" *ngIf="isUserLogged">                        
-                          <button type="button" class="botones_contenido" (click)="onOpenModal(est,'edit')">
-                              <i class="fa-solid fa-pen"></i>Editar
-                          </button>
-                          <button (click)="onOpenModal(est,'delete')" type="button" class="botones_contenido">
-                              <i class="fa-solid fa-eraser"></i>   borrar
-                          </button>
-                      </span>
-                  </div>
+        </div>
+        <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="onAddEducacion(addForm)">
+  
+            <div class="form-group">
+              <div class="input-group">
+                <label for="fechaInicio">Fecha Inicio</label><br>
+                <input ngModel type="text" name="fechaInicio" id="fechaInicio" class="form-control" ngbDatepicker #d="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-primary calendar mt-2" (click)="d.toggle()" type="button">Cagar Fecha
+                    inicio</button>
+                </div>
               </div>
-          </div>        
+            </div>
+
+
+            <div class="form-group">
+              <div class="input-group">
+                <label for="fechaEgreso">Fecha Egreso </label><br>
+                <input ngModel type="text" name="fechaEgreso" class="form-control" ngbDatepicker #c="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-primary calendar mt-2" (click)="c.toggle()" type="button">Cagar Fecha
+                    egreso</button>
+                </div>
+              </div>
+            </div>
+
+
+            <label for="titulo">Título</label><br>
+            <input ngModel type="text" name="titulo" class="form-control">
+            <label for="institucion">Institucion</label><br>
+            <input ngModel type="text" name="institucion" class="form-control">
+            <label for="idPersona">Id Persona</label><br>
+            <input ngModel type="text" name="Id" class="form-control">
+            <div class="modal-footer">
+              <button type="button" id="add-educacion-modal" class="btn btn-primary"
+                data-dismiss="modal">Cancelar</button>
+              <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Agregar</button>
+            </div>
+          </form>
+          <pre>{{addForm.value | json}}</pre>
+        </div>
+
       </div>
+    </div>
   </div>
-</div>
 
 
 
+  <!-- Inicio modal editar -->
 
 
-<!-- Modal para agregar Experiencia -->
-<div class="modal fade" id="addEstudiosModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addExperienciaModal" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal fade" id="updateEducacionModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="updateEducacionModal" aria-hidden="true">
+    <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Agregar Habilidades</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <div class="modal-body">
-              <form #addForm="ngForm" (ngSubmit)="onAddEstudios(addForm)">
-                  <label for="tituloEstudios">Título</label><br>
-                  <input ngModel type="text" name="tituloEstudios"  class="form-control">
-                  <label for="casaDeEstudios">Lugar de estudio </label><br>
-                  <input ngModel type="text" name="casaDeEstudios"  class="form-control">
-                  <label for="fechaInicio">Fecha de Inicio</label><br>
-                  <input ngModel type="text" name="fechaInicio"  class="form-control">
-                  <label for="fechaTermino">Fecha de Finalización</label><br>
-                  <input ngModel type="text" name="fechaTermino"  class="form-control">
-                  <label for="urlLogo">Logo Lugar de estudios</label><br>
-                  <input ngModel type="text" name="urlLogo"  class="form-control">
-                  <div class="modal-footer">
-                      <button  type="button" id="add-estudios-modal" class="btn" data-dismiss="modal">Cancelar</button>
-                      <button [disabled]="addForm.invalid" type="submit" class="btn">Agregar</button>
-                  </div>
-              </form>
-          </div>
-          
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Editar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #editForm="ngForm">
+           
+            <label for="fechaInicio">Fecha inicio</label><br>
+            <input ngModel="{{editEducacion?.fechaInicio}} " type="text" name="fehcaInicio" class="form-control">
+            <label for="fechaEgreso">Fecha egreso</label><br>
+            <input ngModel="{{editEducacion?.fechaEgreso}}" type="text" name="FechaEgreso" class="form-control">
+            <label for="titulo">Título</label><br>
+            <input ngModel="{{editEducacion?.titulo}}" type="text" name="titulo" class="form-control">
+            <label for="institucion">Institucion</label><br>
+            <input ngModel="{{editEducacion?.institucion}}" type="text" name="institucion" class="form-control">
+            <label for="idPersona">Id Persona</label><br>
+            <input ngModel="{{editEducacion?.idPersona}}" type="number" name="idPersona" class="form-control">
+            <input type="hidden" name="id" ngModel="{{editEducacion?.id}} "><br>
+            <div class="modal-footer">
+              <button id="update-educacion-modal" type="button" class="btn" data-dismiss="modal">Cancelar</button>
+              <button (click)="onUpdateEducacion(editForm.value)" type="button" class="btn" data-dismiss="modal">Guardar
+                cambios</button>
+            </div>
+          </form>
+          <pre>{{editForm.value | json}}</pre>
+        </div>
+
+
+
+
       </div>
+    </div>
   </div>
-</div>
-<!-- Modal para actualizar Experiencia -->
-<div class="modal fade" id="updateEstudiosModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="updateEstudiosModal" aria-hidden="true">
-  <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Editar Estudios y Capacitaciones</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <div class="modal-body">
-              <form #editForm="ngForm">
-                  <label for="puesto">Título</label><br>
-                  <input ngModel="{{editEducacion?.fechaInicio}} " type="text" name="tituloEstudios"  class="form-control">
-                  <label for="nombreEmpresa">Lugar de estudio</label><br>
-                  <input ngModel="{{editEducacion?.fechaEgreso}}" type="text" name="casaDeEstudios"  class="form-control">
-                  <label for="fechaInicio">Fecha de Inicio</label><br>
-                  <input ngModel="{{editEducacion?.titulo}}" type="text" name="fechaInicio"  class="form-control">
-                  <label for="fechaFinalizacion">Fecha de Finalización</label><br>
-                  <input ngModel="{{editEducacion?.institucion}}" type="text" name="fechaTermino"  class="form-control">
-                  <label for="descripcion">Logo Lugar de estudios</label><br>
-                  <input ngModel="{{editEducacion?.idPersona}}" type="text" name="urlLogo"  class="form-control">
-                  <input type="hidden" name="id" ngModel="{{editEducacion?.id}} "><br>
-                  <div class="modal-footer">
-                      <button id="update-estudios-modal" type="button" class="btn" data-dismiss="modal">Cancelar</button>
-                      <button (click)="onEditEducation(editForm.value)" type="button" class="btn" data-dismiss="modal">Guardar cambios</button>
-                  </div>
-              </form>
-          </div>
-          
-          
-          
-          
-      </div>
-  </div>
-</div>
+  <!-- Fin Modal modificar -->
+  <!-- Una semana peleando con modal y era error de dependencias -->
 
-<!-- Modal para borrar Experiencia -->
-<div class="modal fade" id="deleteEstudiosModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="deleteEstudiosModal" aria-hidden="true">
-  <div class="modal-dialog">
+  <!-- Comienzo Modal Borrar -->
+  <div class="modal fade" id="deleteEducacionModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="deleteEducacionModal" aria-hidden="true">
+    <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel"></h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <div class="modal-body">
-          </div>
-          <div class="modal-footer">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
           <button type="button" class="btn" data-dismiss="modal">No</button>
-          <button (click)="onDeleteEducation(deleteEducacion.id)" type="button" class="btn" data-dismiss="modal">Sí</button>
-          </div>
-      </div>
-  </div>
-</div>
-</div>
-<!-- borrar de acá para hasta el principio-->
-<div *ngIf="!this.authService.estaLogeado">
-  <h1 class="">Error! ***Debes estar logueado para realizar modificaciones***</h1>
-</div>
-
-<!-- comienza formulario borrar-->
-<div *ngIf="this.authService.estaLogeado">
-  <div class="mt-3 col-md-4">
-    <button (click)="formBorra=!formBorra" class="btn btn-dark">Borrar</button>
-    <button (click)="formCarga=!formCarga" class="btn btn-dark">Cargar Educacion</button>
-    <button (click)="formModifica=!formModifica" class="btn btn-dark">Modifica</button>
-  </div>
-  <div *ngIf="formBorra">
-
-    <form class="col-md-6 formulario">
-      <div>
-        <div *ngFor="let educacion of educacionList; let i=index" class="col-sm-6" style="background-color:#aaa">
-
-          <div class="row mb-3 mt-3">
-            <label class="col-sm-2 mt-3 col-form-label">ID</label>
-            <div class="col-sm-10">
-              <textarea class="form-control">{{educacion.id}}</textarea>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Fecha inicio</label>
-            <div class="col-sm-10">
-              <textarea class="form-control">{{educacion.fechaInicio}}</textarea>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Fecha Egreso</label>
-            <div class="col-sm-10">
-              <textarea class="form-control">{{educacion.fechaEgreso}}</textarea>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Título</label>
-            <div class="col-sm-10">
-              <textarea class="form-control">{{educacion.titulo}}</textarea>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Institución</label>
-            <div class="col-sm-10">
-              <textarea class="form-control">{{educacion.institucion}}</textarea>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-3 col-form-label">IdPersona</label>
-            <div class="col-sm-9">
-              <textarea>{{educacion.idPersona}}</textarea>
-            </div>
-          </div>
-          <div class="m-2 float-left p-2">
-            <button type="submit" class="btn btn-danger" (click)="onDeleteEducation(i)">Borrar</button>
-            <!-- 
-           <button type="submit" class="btn btn-dark" (click)="onUpdateEstudio(educacion)">Modificar</button>
-         -->
-          </div>
-
-        </div>
-
-      </div>
-
-    </form>
-
-
-  </div>
-
-  <!-- fin formulario borrar-->
-  <div class="modal-footer">
-    <button  type="button" id="add-estudios-modal" class="btn" data-dismiss="modal">Cancelar</button>
-    <button [disabled]="addForm.invalid" type="submit" class="btn">Agregar</button>
-</div>
-
-<!-- Modal para agregar Experiencia -->
-<div class="modal fade" id="addEstudiosModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addExperienciaModal" aria-hidden="true">
-  <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Agregar Habilidades</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <div class="modal-body">
-              <form #addForm="ngForm" (ngSubmit)="onAddEstudios(addForm)">
-                  <label for="tituloEstudios">Título</label><br>
-                  <input ngModel type="text" name="tituloEstudios"  class="form-control">
-                  <label for="casaDeEstudios">Lugar de estudio </label><br>
-                  <input ngModel type="text" name="casaDeEstudios"  class="form-control">
-                  <label for="fechaInicio">Fecha de Inicio</label><br>
-                  <input ngModel type="text" name="fechaInicio"  class="form-control">
-                  <label for="fechaTermino">Fecha de Finalización</label><br>
-                  <input ngModel type="text" name="fechaTermino"  class="form-control">
-                  <label for="urlLogo">Logo Lugar de estudios</label><br>
-                  <input ngModel type="text" name="urlLogo"  class="form-control">
-                  <div class="modal-footer">
-                      <button  type="button" id="add-estudios-modal" class="btn" data-dismiss="modal">Cancelar</button>
-                      <button [disabled]="addForm.invalid" type="submit" class="btn">Agregar</button>
-                  </div>
-              </form>
-          </div>
-          
-      </div>
-  </div>
-</div>
-<!-- Modal para agregar Experiencia -->
-<div class="modal fade" id="addEstudiosModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addExperienciaModal" aria-hidden="true">
-  <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Agregar Habilidades</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <div class="modal-body">
-              <form #addForm="ngForm" (ngSubmit)="onAddEstudios(addForm)">
-                  <label for="tituloEstudios">Título</label><br>
-                  <input ngModel type="text" name="tituloEstudios"  class="form-control">
-                  <label for="casaDeEstudios">Lugar de estudio </label><br>
-                  <input ngModel type="text" name="casaDeEstudios"  class="form-control">
-                  <label for="fechaInicio">Fecha de Inicio</label><br>
-                  <input ngModel type="text" name="fechaInicio"  class="form-control">
-                  <label for="fechaTermino">Fecha de Finalización</label><br>
-                  <input ngModel type="text" name="fechaTermino"  class="form-control">
-                  <label for="urlLogo">Logo Lugar de estudios</label><br>
-                  <input ngModel type="text" name="urlLogo"  class="form-control">
-                  <div class="modal-footer">
-                      <button  type="button" id="add-estudios-modal" class="btn" data-dismiss="modal">Cancelar</button>
-                      <button [disabled]="addForm.invalid" type="submit" class="btn">Agregar</button>
-                  </div>
-              </form>
-          </div>
-          
-      </div>
-  </div>
-</div>
-<!-- Modal para actualizar Experiencia -->
-
-
-
-
-
-
-
-
-  <!-- comienza formulario cargar-->
-
-
-  <div *ngIf="formCarga" class="card">
-    <div class="col-md-4">
-      <h1 class="mt-3 ml-5">Formulario Carga</h1>
-      <div class="row justify-content-center mt-5">
-        <div>
-          <form #addForm="ngForm" (ngSubmit)="onAddEstudios(addForm)">
-            <div class="form-group">
-              <label hidden>Id</label>
-              <input hidden class="form-control" type="date" formControlName="id" required>
-            </div>
-
-            <div class="form-group">
-              <div class="input-group">
-                <label>fechaInicio</label>
-                <input class="form-control" type="text" ngbDatepicker #d="ngbDatepicker" placeholder="yyyy-mm-dd"
-                  formControlName="fechaInicio" required>
-                <div class="input-group-append">
-
-                  <button class="btn btn-primary calendar" (click)="d.toggle()" type="button">fecha</button>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="input-group">
-                <label>fechaEgreso</label>
-                <input class="form-control" type="text" ngbDatepicker #d2="ngbDatepicker" placeholder="yyyy-mm-dd"
-                  formControlName="fechaEgreso" required>
-                <div class="input-group-append">
-
-                  <button class="btn btn-primary calendar" (click)="d2.toggle()" type="button">fecha</button>
-
-                </div>
-              </div>
-            </div>
-
-
-
-
-            <div class="form-group">
-              <label>Titulo</label>
-              <input class="form-control" type="text" formControlName="titulo" required>
-            </div>
-            <div class="form-group">
-              <label>insti</label>
-              <input class="form-control" type="text" formControlName="institucion" required>
-            </div>
-            <div class="form-group">
-              <label>id per</label>
-              <input class="form-control" type="text" formControlName="idPersona" required>
-            </div>
-
-
-            <div class="form-group">
-              <button class="btn btn-primary btn-block" type="submit">Cargar</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-
-  </div>
-
-  <!--    fin formulario cargar-->
-
-  <!-- comienza formulario modificar-->
-  <div *ngIf="formModifica" class="row">
-    <div *ngFor="let educacion of educacionList; let i=index" class="col-md-4">
-      <div class="row justify-content-center mt-5">
-        <div class="col-md-10">
-          <form [formGroup]="educationForm" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-              <label>Id</label>
-              <input class="form-control" type="text" value="{{educacion.fechaInicio}}" formControlName="id" required>
-            </div>
-
-            <div class="form-group">
-              <label>fechaInicio</label>
-              <input class="form-control" type="text" value="{{educacion.fechaInicio}}" formControlName="fechaInicio"
-                required>
-            </div>
-            <div class="form-group">
-              <label>fecha final</label>
-              <input class="form-control" type="text" value="{{educacion.fechaEgreso}}" formControlName="fechaEgreso"
-                required>
-            </div>
-            <div class="form-group">
-              <label>Titulo</label>
-              <input class="form-control" type="email" value="{{educacion.titulo}}" formControlName="titulo" required>
-            </div>
-            <div class="form-group">
-              <label>insti</label>
-              <input class="form-control" type="email" value="{{educacion.institucion}}" formControlName="institucion"
-                required>
-            </div>
-            <div class="form-group">
-              <label>id per</label>
-              <input class="form-control" type="email" value="{{educacion.idPersona}}" formControlName="idPersona"
-                required>
-            </div>
-
-
-            <div class="form-group">
-              <button class="btn btn-primary btn-block" type="submit"
-                (click)="onEditEducation(educacion.id)">Modificar</button>
-            </div>
-          </form>
+          <button (click)="onDeleteEducacion(deleteEducacion.id)" type="button" class="btn"
+            data-dismiss="modal">Sí</button>
         </div>
       </div>
     </div>
   </div>
-
 </div>
-<!-- terminal formulario modificar-->
+<!-- Comienzo Modal Borrar -->

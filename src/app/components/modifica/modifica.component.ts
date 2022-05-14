@@ -1,30 +1,31 @@
 import { Component,Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Educacion } from 'src/app/entidades/educacion';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+/*import { FormBuilder, FormGroup, Validators } from '@angular/forms';*/
 import { EducacionService } from 'src/app/services/educacion.service';
 import { Observable } from 'rxjs';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
+  selector: 'app-modifica',
   templateUrl: './modifica.component.html',
   styleUrls: ['./modifica.component.css'],
   providers:[EducacionService]
 })
 export class ModificaComponent implements OnInit {
   
-  educacionList: Educacion[] = [];
+  public educacionList: Educacion[] = [];
   isUserLogged!:boolean
   formBorra=false;
   formCarga=false;
   formModifica=false;
-  educationForm!: FormGroup;
+  educacionForm!: FormGroup;
   public editEducacion!: Educacion;
   public deleteEducacion!: Educacion;
 
-  constructor(public authService: AuthService, private educacionService: EducacionService, public formBuilder: FormBuilder) { 
-    this.educationForm = formBuilder.group(
+  constructor(public authService: AuthService, private educacionService: EducacionService) { 
+   /* this.educacionForm = FormGroup.group(
       {
       id: [''],
       fechaInicio: [''],
@@ -34,10 +35,17 @@ export class ModificaComponent implements OnInit {
       idPersona: ['', Validators.required],
     }
     );
-    
+    */
 
   }
-  public getEstudios(): void {
+
+  ngOnInit() {
+
+    this.isUserLogged = this.authService.estaLogeado;
+    this.getEducacion();
+  }
+
+  public getEducacion(): void {
     this.educacionService.getEducacion().subscribe(
       (response:Educacion[]) => {
         this.educacionList = response;
@@ -48,12 +56,12 @@ export class ModificaComponent implements OnInit {
     );
   }
 
-  public onAddEstudios(addForm: NgForm):void {
-    document.getElementById('add-estudios-modal')?.click();
+  public onAddEducacion(addForm: NgForm):void {
+    document.getElementById('add-educacion-modal')?.click();
     this.educacionService.addEducacion(addForm.value).subscribe(
       (response: Educacion) => {
         console.log(response);
-        this.getEstudios();
+        this.getEducacion();
         addForm.reset();
       },
       (error: HttpErrorResponse) => {
@@ -63,7 +71,7 @@ export class ModificaComponent implements OnInit {
     )
     
   } 
-  save(event: Event) {
+  /*save(event: Event) {
     event.preventDefault();
     if (this.educationForm.valid) {
       const value = this.educationForm.value;
@@ -73,11 +81,9 @@ export class ModificaComponent implements OnInit {
       this.educationForm.markAllAsTouched();
     }
   }
-  
-  ngOnInit(): void {
-
-    this.isUserLogged = this.authService.estaLogeado;
-    
+  */
+ 
+ /*
     this.reloadData();
   }
   private reloadData() {
@@ -98,7 +104,8 @@ export class ModificaComponent implements OnInit {
       idPersona: ''
     })
   }
-
+*/
+/*
   loadForm(educacion: Educacion) {
     this.educationForm.setValue({
       id: educacion.id,
@@ -110,8 +117,8 @@ export class ModificaComponent implements OnInit {
     })
    
   }
-  
-
+  */
+/*
   onSubmit() {
     let educacion: Educacion = this.educationForm.value;
     if (this.educationForm.get('id')?.value == '') {
@@ -180,6 +187,38 @@ export class ModificaComponent implements OnInit {
   )
   
 }
+*/
+
+
+
+public onUpdateEducacion(educacion: Educacion):void {
+  this.educacionService.updateEducacion(educacion).subscribe(
+  (response: Educacion) => {
+    console.log(response);
+    this.getEducacion();
+    
+  },
+  (error: HttpErrorResponse) => {
+    alert(error.message);
+  }
+)
+
+}
+
+public onDeleteEducacion(id: number):void {
+  this.educacionService.borrarEducacion(id).subscribe(
+  (response: void) => {
+    console.log(response);
+    this.getEducacion();
+    
+  },
+  (error: HttpErrorResponse) => {
+    console.log(error.message);
+  }
+)
+
+}
+
 
 public onOpenModal(educacion: Educacion, mode: string): void{
   const container = document.getElementById('main-container');
@@ -188,15 +227,15 @@ public onOpenModal(educacion: Educacion, mode: string): void{
   button.style.display = 'none';
   button.setAttribute('data-toggle', 'modal');
   if (mode === 'add') {
-    button.setAttribute('data-target', '#addEstudiosModal');
+    button.setAttribute('data-target', '#addEducacionModal');
   }
   if (mode === 'edit') {
     this.editEducacion = educacion;
-    button.setAttribute('data-target', '#updateEstudiosModal');
+    button.setAttribute('data-target', '#updateEducacionModal');
   }
   if (mode === 'delete') {
     this.deleteEducacion = educacion;
-    button.setAttribute('data-target', '#deleteEstudiosModal');
+    button.setAttribute('data-target', '#deleteEducacionModal');
   }
   container?.appendChild(button);
   button.click();
