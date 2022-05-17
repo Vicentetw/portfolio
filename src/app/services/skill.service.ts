@@ -17,26 +17,41 @@ private apiHerokuUrl = environment.apiUrl;
     return this.http.get<Skill[]>(`${this.apiHerokuUrl}skill/todas`);
   }
 
-  guardarNuevaSkill(skill:Skill): Observable<Skill> {
-    return this.http.post<Skill>(this.apiHerokuUrl + "skill/create", skill);
+  public addSkill(skill:Skill): Observable<Skill> {
+    return this.http.post<Skill>(`${this.apiHerokuUrl}skill`, skill);
   }
 
   modificarSkill(skill: Skill): Observable<any> {
     return this.http.put<any>(this.apiHerokuUrl + "skill/update", skill);
   }
 
-  borrarSkill(id: number): Observable<any> {
-    return this.http.delete<any>(this.apiHerokuUrl + "skill/" + id);
+  public borrarSkill(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiHerokuUrl}skill/${id}`);
   }
+
   public getSkill(): Observable<Skill[]> {
-    return this.http.get<Skill[]>(`${this.apiHerokuUrl}/skill/all`);
+    return this.http.get<Skill[]>(`${this.apiHerokuUrl}skill/todas`);
   }
  
-  public editarDatosSkill(skill:Skill):Observable<any>{
-    return  this.http.put(this.url,skill);
-  }
+  public updateSkill(skill: Skill): Observable<Skill> {
+    return this.http.put<Skill>(`${this.apiHerokuUrl}modifica/skill`, skill);
+  } 
+  
   public obtenerUnaSkill(){
     return this.http.get<any>(this.apiHerokuUrl + "skill/1")
 }
+
+/********** comienzo copia */
+
+
+
+
+
+
+
+
+
+/** fin copia *******/
+
 
 }

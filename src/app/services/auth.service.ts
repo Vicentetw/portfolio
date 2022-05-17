@@ -45,7 +45,7 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          const modifica = this.router.navigate(['arFm2225txrz2532kkkdsdieujdls3#23345dnesdjy2j430slk9sk3d']);
+          const modifica = this.router.navigate(['modifica']);
         });
         this.SetUserData(result.user);
       })

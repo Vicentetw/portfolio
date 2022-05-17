@@ -29,6 +29,7 @@ import { environment } from '../environments/environment';
 import { AuthService } from './services/auth.service';
 import { ModificaComponent } from './components/modifica/modifica.component';
 import { EditButtonComponent } from './botones/edit-button/edit-button.component';
+import { ModificaSkillComponent } from './components/modifica-skill/modifica-skill.component';
 
 
 
@@ -48,7 +49,8 @@ import { EditButtonComponent } from './botones/edit-button/edit-button.component
     FooterComponent,
     PortfolioComponent,
     ModificaComponent,
-    EditButtonComponent
+    EditButtonComponent,
+    ModificaSkillComponent
     
   ],
   imports: [
