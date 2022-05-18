@@ -30,7 +30,7 @@ import { AuthService } from './services/auth.service';
 import { ModificaComponent } from './components/modifica/modifica.component';
 import { EditButtonComponent } from './botones/edit-button/edit-button.component';
 import { ModificaSkillComponent } from './components/modifica-skill/modifica-skill.component';
-
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 
 
@@ -67,7 +67,10 @@ import { ModificaSkillComponent } from './components/modifica-skill/modifica-ski
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    NgCircleProgressModule.forRoot({
+      
+    })
   ],
   providers: [AuthService],
   //componente principal
