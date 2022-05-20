@@ -14,7 +14,7 @@ export class EditButtonComponent implements OnInit {
   }
 Editar(){
   if (this.authService.estaLogeado)
-  this.authService.router.navigate(['arFm2225txrz2532kkkdsdieujdls3#23345dnesdjy2j430slk9sk3d']);
+  this.authService.router.navigate(['modifica']);
   else{
     this.authService.router.navigate(['login']);
   }

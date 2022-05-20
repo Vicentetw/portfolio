@@ -1,6 +1,8 @@
-<app-header class="image"></app-header>
-<!--MODICICA EDUCACION-->
-
+<app-header class="image"><app-home-button></app-home-button></app-header>
+<!--Boton home-->
+<div>
+  <app-home-button></app-home-button>
+</div>
 
 
 
@@ -9,9 +11,11 @@
   <div>
     <div class="contenido" id="main-container">
       <div id="educacion">
-        <h4 class="educacion"> Educacion
+        <h4 class="educacion"> Educacion 
+          
           <button ngbTooltip="Agregar educación" class="btn btn-success" (click)="onOpenModal(null!,'add')"
             *ngIf="this.isUserLogged"><span class="btn-primary"></span> Agregar educacion</button>
+            
         </h4>
         <div class="container">
           <div class="columnas" *ngFor="let e of educacionList">

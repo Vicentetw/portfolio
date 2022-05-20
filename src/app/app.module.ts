@@ -31,6 +31,10 @@ import { ModificaComponent } from './components/modifica/modifica.component';
 import { EditButtonComponent } from './botones/edit-button/edit-button.component';
 import { ModificaSkillComponent } from './components/modifica-skill/modifica-skill.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { EditSkillButtonComponent } from './botones/edit-skill-button/edit-skill-button.component';
+import { EditExperienciaButtonComponent } from './botones/edit-experiencia-button/edit-experiencia-button.component';
+import { HomeButtonComponent } from './botones/home-button/home-button.component';
+import { ModificaExperienciaComponent } from './components/modifica-experiencia/modifica-experiencia.component';
 
 
 
@@ -50,7 +54,11 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     PortfolioComponent,
     ModificaComponent,
     EditButtonComponent,
-    ModificaSkillComponent
+    ModificaSkillComponent,
+    EditSkillButtonComponent,
+    EditExperienciaButtonComponent,
+    HomeButtonComponent,
+    ModificaExperienciaComponent
     
   ],
   imports: [

@@ -41,17 +41,6 @@ private apiHerokuUrl = environment.apiUrl;
     return this.http.get<any>(this.apiHerokuUrl + "skill/1")
 }
 
-/********** comienzo copia */
-
-
-
-
-
-
-
-
-
-/** fin copia *******/
 
 
 }
