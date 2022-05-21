@@ -22,7 +22,7 @@ export const environment = {
     measurementId: "G-6N45V95T6P"
   
   },
-  apiUrl: 'http://localhost:8080/',
+  apiUrl: 'https://floating-chamber-24100.herokuapp.com/',
   
 };
 

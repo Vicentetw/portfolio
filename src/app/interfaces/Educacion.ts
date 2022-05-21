@@ -4,5 +4,5 @@ export interface Educacion {
     fecha_egreso: string;
     titulo: string;
     institucion: string;
-    idPersona: number;
+    persona_id: number;
   }
