@@ -15,101 +15,22 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4" *ngFor="let exp of experiencia">
         <div class="service-box">
           <div class="service-ico">
-            <span class="ico-circle"><i class="bi bi-card-checklist"></i></span>
+            <span class="ico-circle"><i class="bi bi-bag-check"></i></span>
           </div>
           <div class="service-content">
-            <h2 class="titulos">Diseño web</h2>
-            <h3 class="text-muted">7 años de experiencia</h3>
+            <h2 class="titulos">{{this.exp.nombre_experiencia}}</h2>
+            <h3 class="text-muted">{{this.exp.duracion_experiencia}}</h3>
             <p class="s-description text-center">
-              Diseño Web, Wordpress. CPanel y VestaCP, MySQL, instalación, themes, plugins, firewall, pagos.
+              {{this.exp.descripcion_experiencia}}
             </p>
-            <p class="s-description text-center">
-              Desde el año 2021 he comenzado a trabajar con Angular, Node, MySQL, Bootstrap, HTML, CSS, JAVA, JS, TS.
-            </p>
+            
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="service-box">
-          <div class="service-ico">
-            <span class="ico-circle"><i class="bi bi-cart"></i></span>
-          </div>
-          <div class="service-content">
-            <h2 class="titulos">Venta y Reparación de PC</h2>
-            <h3 class="text-muted">22 años de experiencia</h3>
-            <p class="s-description text-center">
-              Venta y Reparación de PC. Mothers, Monitores, Impresoras, Web Cams.
-            </p>
-            <p class="s-description text-center">
-              Windows, Linux, proxy, recuperación de archivos, eliminación de virus, malware, instalación y soporte de
-              software, etc.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="service-box">
-          <div class="service-ico">
-            <span class="ico-circle"><i class="bi bi-bar-chart"></i></span>
-          </div>
-          <div class="service-content">
-            <h2 class="titulos">Tendido de red LAN</h2>
-            <h3 class="text-muted">17 años de experiencia</h3>
-            <p class="s-description text-center">
-              Tendido de red cableada, confuguración de red inalámbrica. Filtrado de contenido, instalación de proxy.
-              Configuración de clientes, impresoras en red, carpetas compartidas.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="service-box">
-          <div class="service-ico">
-            <span class="ico-circle"><i class="bi bi-alarm"></i></span>
-          </div>
-          <div class="service-content">
-            <h2 class="titulos">instalación de relojes biométricos</h2>
-            <h3 class="text-muted">12 años de experiencia</h3>
-            <p class="s-description text-center">
-              Instalación y reparación de relojes boiméticos, configuración, carga de huellas, códigos, personal, red,
-              soft, cambio de prismas.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="service-box">
-          <div class="service-ico">
-            <span class="ico-circle"><i class="bi bi-pencil"></i></span>
-          </div>
-          <div class="service-content">
-            <h2 class="titulos">Diseño gráfico e imprenta</h2>
-            <h3 class="text-muted">5 años de experiencia</h3>
-            <p class="s-description text-center">
-              Diseño de carteles, revistas, folletos, imanes, tarjetas.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="service-box">
-          <div class="service-ico">
-            <span class="ico-circle"><i class="bi bi-person-check-fill"></i></span>
-          </div>
-          <div class="service-content">
-            <h2 class="titulos">Asistencia a usuarios</h2>
-            <h3 class="text-muted">22 años de experiencia</h3>
-            <p class="s-description text-center">
-              Asistencia remota y presencial, sof, configuración, componentes, recuperación de archivos,virus, red,
-              periféricos, cámaras ip, routers, etc.
-            </p>
-          </div>
-        </div>
-      </div>
+      
     </div>
   </div>
 </section>
