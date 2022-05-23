@@ -16,17 +16,11 @@ name = 'Perrotta Vicente';
 iam =' Full Stack Developer';
   public persona:any
   
-//constructor(private service:PersonaService){}   
+  
 constructor(public authService: AuthService){}  
 
 ngOnInit(): void {
-//this.service.obtenerDatosPersona(1).subscribe(data => {
-  //console.log(data);
- //this.persona=data;
-  // this.=data["education"];
-  //this.miServicio.obtenerDatosEducacion().subscribe(data => {
-   // this.educacion=data["education"];
- // })
+
   }
 
 }

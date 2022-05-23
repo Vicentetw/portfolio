@@ -8,15 +8,15 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class EditButtonComponent implements OnInit {
 
-  constructor( public authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
   }
-Editar(){
-  if (this.authService.estaLogeado)
-  this.authService.router.navigate(['modifica']);
-  else{
-    this.authService.router.navigate(['login']);
+  Editar() {
+    if (this.authService.estaLogeado)
+      this.authService.router.navigate(['modifica']);
+    else {
+      this.authService.router.navigate(['login']);
+    }
   }
-}
 }
