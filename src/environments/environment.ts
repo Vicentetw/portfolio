@@ -23,7 +23,7 @@ export const environment = {
   
   },
   /* apiUrl: 'https://floating-chamber-24100.herokuapp.com/',*/
-  apiUrl: 'localhost:4200/',
+  apiUrl: 'localhost:8080/',
   
 };
 
