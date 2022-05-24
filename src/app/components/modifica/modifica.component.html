@@ -1,56 +1,63 @@
 <app-header class="image"></app-header>
+<!--aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
+>
+<p>Number of modals: 1</p>
 <div *ngIf="!this.authService.estaLogeado">
 <h1 class="">Error! ***Debes estar logueado para realizar modificaciones***</h1>
 </div>
 
 <div *ngIf="this.authService.estaLogeado">
 <form  class="col-sm-10 formulario">
-    <div class="row mb-3">
-      <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+  <div>
+  <div *ngFor="let educacion of educacionList; let i=index"  class="col-sm-6"  style="background-color:#aaa">
+
+    <div class="row mb-3 m-1">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">ID</label>
       <div class="col-sm-10">
-        <input type="email" class="form-control" id="inputEmail3">
+        <td>{{educacion.id}}</td> 
       </div>
     </div>
     <div class="row mb-3">
-      <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Fecha inicio</label>
       <div class="col-sm-10">
-        <input type="password" class="form-control" id="inputPassword3">
+        <td>{{educacion.fechaInicio}}</td>
       </div>
     </div>
-    <fieldset class="row mb-3">
-      <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-          <label class="form-check-label" for="gridRadios1">
-            First radio
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-          <label class="form-check-label" for="gridRadios2">
-            Second radio
-          </label>
-        </div>
-        <div class="form-check disabled">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-          <label class="form-check-label" for="gridRadios3">
-            Third disabled radio
-          </label>
-        </div>
-      </div>
-    </fieldset>
     <div class="row mb-3">
-      <div class="col-sm-10 offset-sm-2">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="gridCheck1">
-          <label class="form-check-label" for="gridCheck1">
-            Example checkbox
-          </label>
-        </div>
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Fecha Egreso</label>
+      <div class="col-sm-10">
+        <td>{{educacion.fechaEgreso}}</td>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <div class="row mb-3">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Título</label>
+      <div class="col-sm-10">
+        <td>{{educacion.titulo}}</td>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Institución</label>
+      <div class="col-sm-10">
+        <td>{{educacion.institucion}}</td>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">IdPersona</label>
+      <div class="col-sm-10">
+        <td>{{educacion.idPersona}}</td>
+      </div>
+    </div>
+    <div class="m-2 float-left p-2">
+      <button type="submit" class="btn btn-danger" (click)="onDeleteEducation">Borrar</button>
+      <button type="submit" class="btn btn-dark" (click)="onEditEducation">Editar</button>
+     </div>
+   
+  </div> 
+    
+  </div> 
+
   </form>
 </div>
-<div>
+
+
+
