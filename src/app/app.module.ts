@@ -10,15 +10,14 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { EducationComponent } from './components/education/education.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { SoftwareSkillComponent } from './components/skills/software-skill/software-skill.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from "@angular/forms";
-//import { MatFormFieldModule } from "@angular/material/form-field";
-//import { MatInputModule } from "@angular/material/input";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import {FormsModule} from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -28,7 +27,14 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { AuthService } from './services/auth.service';
-
+import { ModificaComponent } from './components/modifica/modifica.component';
+import { EditButtonComponent } from './botones/edit-button/edit-button.component';
+import { ModificaSkillComponent } from './components/modifica-skill/modifica-skill.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
+import { EditSkillButtonComponent } from './botones/edit-skill-button/edit-skill-button.component';
+import { EditExperienciaButtonComponent } from './botones/edit-experiencia-button/edit-experiencia-button.component';
+import { HomeButtonComponent } from './botones/home-button/home-button.component';
+import { ModificaExperienciaComponent } from './components/modifica-experiencia/modifica-experiencia.component';
 
 
 
@@ -43,10 +49,16 @@ import { AuthService } from './services/auth.service';
     ProjectsComponent,
     EducationComponent,
     ContactComponent,
-    SoftwareSkillComponent,
     LoginComponent,
     FooterComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    ModificaComponent,
+    EditButtonComponent,
+    ModificaSkillComponent,
+    EditSkillButtonComponent,
+    EditExperienciaButtonComponent,
+    HomeButtonComponent,
+    ModificaExperienciaComponent
     
   ],
   imports: [
@@ -56,14 +68,17 @@ import { AuthService } from './services/auth.service';
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-   // MatFormFieldModule,
-   // MatInputModule,
+    MatFormFieldModule,
+    MatInputModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    NgCircleProgressModule.forRoot({
+      
+    })
   ],
   providers: [AuthService],
   //componente principal

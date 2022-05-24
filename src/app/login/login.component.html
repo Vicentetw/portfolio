@@ -11,8 +11,14 @@
       </div>
       <!-- Calling SignIn Api from AuthService -->
       <div class="form-group">
-        <input type="button" class="btn btn-primary btn-block m-2" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
+        <input type="button" class="btn btn-primary btn-lg btn-block m-2" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
       </div>
+
+      <div   class="form-group">
+        <input  class="btn btn-primary btn-lg btn-block m-2 log-out" value="Log out" (click)="this.authService.SignOut()">
+      </div>
+
+      
      <!-- solo la letra O 
       <div class="form-group">
         <span class="or"><span class="orInner">Or</span></span>

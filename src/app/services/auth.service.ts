@@ -12,22 +12,29 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   userData: any; // Save logged in user data
-  constructor(
+    constructor(
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
     public ngZone: NgZone // NgZone service to remove outside scope warning
+   
   ) {
+    
+    
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
+        let logeado:false;
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user')!);
+        console.log("logeadooooooooo")
+
       } else {
         localStorage.setItem('user', 'null');
         JSON.parse(localStorage.getItem('user')!);
+        
       }
     });
   }
@@ -37,7 +44,7 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['portfolio']);
+          this.router.navigate(['arFm2225txrz2532kkkdsdieujdls3#23345dnesdjy2j430slk9sk3d']);
         });
         this.SetUserData(result.user);
       })
@@ -82,6 +89,13 @@ export class AuthService {
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
     return user !== null && user.emailVerified !== false ? true : false;
+    console.log (user);
+  }
+  // Returns true when user is looged in and email is verified
+  get estaLogeado(): boolean {
+    const user = JSON.parse(localStorage.getItem('user')!);
+    return user !== null ? true : false;
+    console.log (user);
   }
   // Sign in with Google
   GoogleAuth() {
@@ -125,9 +139,11 @@ export class AuthService {
   }
   // Sign out
   SignOut() {
-    return this.afAuth.signOut().then(() => {
+      return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['portfolio']);
+           
     });
   }
+  
 }

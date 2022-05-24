@@ -14,7 +14,11 @@ export class LoginComponent implements OnInit {
 ngOnInit(): void {
   
 }
-  
+
+Salir(){
+  this.authService.SignOut();
+  console.log("salio")
+}
 /**
 export class LoginComponent implements OnInit {
   public form:FormGroup;
