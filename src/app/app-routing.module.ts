@@ -14,8 +14,6 @@ const routes: Routes = [
   {path: 'portfolio', component: PortfolioComponent},
   {path: 'modifica', component: ModificaComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'modifica-skill', component: ModificaSkillComponent},
-  {path: 'modifica-experiencia', component: ModificaExperienciaComponent},
   {path: '',redirectTo:'portfolio',pathMatch:'full'},
   {path: ' ', component: Error404Component },
   {path: '**', component: Error404Component},

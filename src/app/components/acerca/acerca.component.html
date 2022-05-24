@@ -5,7 +5,7 @@
    
     <div>
       <div class="perfil ">
-        <div>
+        <div *ngIf="!this.authService.estaLogeado" >
         <img class="img-fluid  fotoperfil" src="../../../assets/images/perfil.png" alt="banner" />
       </div>
 <!-- ======= texto animado Vicente Perrotta======= -->
