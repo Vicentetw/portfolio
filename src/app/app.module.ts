@@ -29,7 +29,8 @@ import { environment } from '../environments/environment';
 import { AuthService } from './services/auth.service';
 import { ModificaComponent } from './components/modifica/modifica.component';
 import { EditButtonComponent } from './botones/edit-button/edit-button.component';
-
+import { ModificaSkillComponent } from './components/modifica-skill/modifica-skill.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 
 @NgModule({
@@ -48,11 +49,15 @@ import { EditButtonComponent } from './botones/edit-button/edit-button.component
     PortfolioComponent,
     ModificaComponent,
     EditButtonComponent,
+<<<<<<< HEAD
     ModificaSkillComponent,
     EditSkillButtonComponent,
     EditExperienciaButtonComponent,
     HomeButtonComponent,
     ModificaExperienciaComponent
+=======
+    ModificaSkillComponent
+>>>>>>> form-skill
     
   ],
   imports: [

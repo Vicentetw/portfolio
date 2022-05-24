@@ -6,6 +6,7 @@ import { EducacionService } from 'src/app/services/educacion.service';
 import { Observable } from 'rxjs';
 import { NgForm, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import {NgbConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-modifica',
@@ -17,14 +18,12 @@ export class ModificaComponent implements OnInit {
   
   public educacionList: Educacion[] = [];
   isUserLogged!:boolean
-  formBorra=false;
-  formCarga=false;
-  formModifica=false;
-  educacionForm!: FormGroup;
+   educacionForm!: FormGroup;
   public editEducacion!: Educacion;
   public deleteEducacion!: Educacion;
+  
 
-  constructor(public authService: AuthService, private educacionService: EducacionService) { 
+  constructor(public authService: AuthService, private educacionService: EducacionService,ngbConfig: NgbConfig) { 
    /* this.educacionForm = FormGroup.group(
       {
       id: [''],
@@ -43,8 +42,9 @@ export class ModificaComponent implements OnInit {
 
     this.isUserLogged = this.authService.estaLogeado;
     this.getEducacion();
+    
   }
-
+/*************Educacion*************/
   public getEducacion(): void {
     this.educacionService.getEducacion().subscribe(
       (response:Educacion[]) => {
@@ -63,6 +63,7 @@ export class ModificaComponent implements OnInit {
         console.log(response);
         this.getEducacion();
         addForm.reset();
+        alert("Educacion ha sido agregada correctamente");
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -71,124 +72,7 @@ export class ModificaComponent implements OnInit {
     )
     
   } 
-  /*save(event: Event) {
-    event.preventDefault();
-    if (this.educationForm.valid) {
-      const value = this.educationForm.value;
-      this.educacionService.addEducacion(value);
-      
-    } else {
-      this.educationForm.markAllAsTouched();
-    }
-  }
-  */
- 
- /*
-    this.reloadData();
-  }
-  private reloadData() {
-    this.educacionService.obtenerDatosEducacion().subscribe(mdata => {
-      this.educacionList=mdata;
-      console.log('Data2 ', mdata);
-    })
-    
-  }
-
-  private clearForm() {
-    this.educationForm.setValue({
-      id: '',
-      fecha_inicio: '',
-      fecha_egreso: '',
-      titulo:'',
-      institucion:'',
-      idPersona: ''
-    })
-  }
-*/
-/*
-  loadForm(educacion: Educacion) {
-    this.educationForm.setValue({
-      id: educacion.id,
-      fecha_inicio: educacion.fecha_inicio,
-      fecha_egreso: educacion.fecha_egreso,
-      titulo: educacion.titulo,
-      institucion: educacion.institucion,
-      idPersona:educacion.idPersona
-    })
-   
-  }
-  */
-/*
-  onSubmit() {
-    let educacion: Educacion = this.educationForm.value;
-    if (this.educationForm.get('id')?.value == '') {
-      this.educacionService.addEducacion(educacion).subscribe(
-        (newEducation: Educacion) => {
-          this.educacionList.push(newEducation);
-        }
-      );
-    } else {
-      this.educacionService.modificarEducacion(educacion).subscribe(
-        () => {
-          this.reloadData();
-        }
-      )
-    }
-  }
-
-  onNewEducation() {
-    this.clearForm();
-  }
-
-  onEditEducation(index: number) {
-    let educacion: Educacion = this.educationForm.value;
-    if (confirm("¿Está seguro que desea modificar la educación seleccionada?")) {
-     this.educacionService.addEducacion(educacion).subscribe(
-      () => {
-        this.reloadData();
-      }
-    )
-  }  
-  }
-
-  onNuevaEducation() {
-    let educacion: Educacion = this.educationForm.value;
-    if (confirm("¿Está seguro que desea modificar la educación seleccionada?")) {
-     this.educacionService.addEducacion(educacion).subscribe(
-      () => {
-        this.reloadData();
-      }
-    )
-  }  
-  }
   
-
-  onDeleteEducation(index: number) {
-    let educacion: Educacion = this.educacionList[index];
-    if (confirm("¿Está seguro que desea borrar la educación seleccionada?")) {
-      this.educacionService.borrarEducacion(educacion.id).subscribe(
-        () => {
-          this.reloadData();
-        }
-      )
-    }
-  }
-
-
-
-  
-  public onUpdateEducacion(editEducacion: Educacion):void {
-    this.educacionService.modificarEducacion(editEducacion).subscribe(
-    (response: Educacion) => {
-      console.log(response);
-      this.reloadData();
-      
-    }
-  )
-  
-}
-*/
-
 
 
 public onUpdateEducacion(educacion: Educacion):void {
@@ -196,6 +80,7 @@ public onUpdateEducacion(educacion: Educacion):void {
   (response: Educacion) => {
     console.log(response);
     this.getEducacion();
+    alert("Educacion ha sido actualizada correctamente");
     
   },
   (error: HttpErrorResponse) => {
@@ -210,6 +95,7 @@ public onDeleteEducacion(id: number):void {
   (response: void) => {
     console.log(response);
     this.getEducacion();
+    alert("Educacion ha sido eliminada correctamente");
     
   },
   (error: HttpErrorResponse) => {
@@ -240,6 +126,9 @@ public onOpenModal(educacion: Educacion, mode: string): void{
   container?.appendChild(button);
   button.click();
 }
+
+/************* Fin Educacion*************/
+
 
 
 

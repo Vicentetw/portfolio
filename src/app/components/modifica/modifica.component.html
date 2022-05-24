@@ -1,12 +1,17 @@
 <app-header class="image"></app-header>
+<!--MODICICA EDUCACION-->
 
+
+
+
+<!--Comienzo Educacion -->
 <div *ngIf="this.isUserLogged">
   <div>
     <div class="contenido" id="main-container">
       <div id="educacion">
         <h4 class="educacion"> Educacion
-          <button class="btn btn-success" (click)="onOpenModal(null!,'add')" *ngIf="this.isUserLogged"><span
-              class="btn-primary"></span> Agregar</button>
+          <button ngbTooltip="Agregar educación" class="btn btn-success" (click)="onOpenModal(null!,'add')"
+            *ngIf="this.isUserLogged"><span class="btn-primary"></span> Agregar educacion</button>
         </h4>
         <div class="container">
           <div class="columnas" *ngFor="let e of educacionList">
@@ -22,7 +27,8 @@
 
               </p>
               <span id="eliminar-editar-educacion" *ngIf="this.isUserLogged">
-                <button type="button" class="botones_editar_borrar" (click)="onOpenModal(e,'edit')">
+                <button ngbTooltip="Editar educación" type="button" class="botones_editar_borrar"
+                  (click)="onOpenModal(e,'edit')">
                   <i class="fa-solid fa-pen"></i>Editar
                 </button>
                 <button (click)="onOpenModal(e,'delete')" type="button" class="botones_editar_borrar">
@@ -49,11 +55,11 @@
           <h5 class="modal-title" id="staticBackdropLabel">Agregar Educacion</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-                    </button>
+          </button>
         </div>
         <div class="modal-body">
           <form #addForm="ngForm" (ngSubmit)="onAddEducacion(addForm)">
-  <!--
+            <!--
             <div class="form-group">
               <div class="input-group">
                 <label for="fecha_inicio">Fecha Inicio</label><br>
@@ -77,12 +83,14 @@
               </div>
             </div>
           -->
-          <label for="id"  type="hidden">Id</label><br>
-          <input ngModel type="number hidden" id="id" name="id"    class="form-control">
-          <label for="fecha_inicio">Fecha Inicio</label><br>
-          <input ngModel type="text" id="fecha_inicio" name="fecha_inicio" placeholder="yyyy-mm-dd"   class="form-control">
-          <label for="fecha_egreso">Fecha egreso</label><br>
-          <input ngModel type="text" id="fecha_egreso" name="fecha_egreso" placeholder="yyyy-mm-dd" class="form-control">
+            <label for="id" type="hidden" class="oculto">Id</label><br>
+            <input ngModel type="number" id="id" name="id" class="form-control oculto">
+            <label for="fecha_inicio">Fecha Inicio</label><br>
+            <input ngModel  type="text" id="fecha_inicio" name="fecha_inicio"
+              placeholder="yyyy-mm-dd" class="form-control">
+            <label for="fecha_egreso">Fecha egreso</label><br>
+            <input ngModel type="text" id="fecha_egreso" name="fecha_egreso" placeholder="yyyy-mm-dd"
+              class="form-control">
             <label for="titulo">Título</label><br>
             <input ngModel type="text" id="titulo" name="titulo" class="form-control">
             <label for="institucion">Institucion</label><br>
@@ -122,19 +130,25 @@
             <label type="hidden" for="id">ID</label><br>
             <input type="hidden" ngModel="{{editEducacion?.id}} " type="number" id="id" name="id" class="form-control">
             <label for="fecha_inicio">Fecha inicio</label><br>
-            <input ngModel="{{editEducacion?.fecha_inicio}} " type="text" id="fecha_inicio" name="fecha_inicio" class="form-control">
+            <input ngModel="{{editEducacion?.fecha_inicio}} " type="text" id="fecha_inicio" name="fecha_inicio"
+              class="form-control">
             <label for="fecha_egreso">Fecha egreso</label><br>
-            <input ngModel="{{editEducacion?.fecha_egreso}}" type="text" id="fecha_egreso" name="fecha_egreso" class="form-control">
+            <input ngModel="{{editEducacion?.fecha_egreso}}" type="text" id="fecha_egreso" name="fecha_egreso"
+              class="form-control">
             <label for="titulo">Título</label><br>
             <input ngModel="{{editEducacion?.titulo}}" type="text" id="titulo" name="titulo" class="form-control">
             <label for="institucion">Institucion</label><br>
-            <input ngModel="{{editEducacion?.institucion}}" type="text" id="institucion" name="institucion" class="form-control">
+            <input ngModel="{{editEducacion?.institucion}}" type="text" id="institucion" name="institucion"
+              class="form-control">
             <label for="idPersona">Id Persona</label><br>
-            <input ngModel="{{editEducacion?.idPersona}}" type="number" id="idPersona" name="idPersona" class="form-control">
+            <input ngModel="{{editEducacion?.idPersona}}" type="number" id="idPersona" name="idPersona"
+              class="form-control">
             <input type="hidden" name="id" ngModel="{{editEducacion?.id}} "><br>
             <div class="modal-footer">
-              <button id="update-educacion-modal" type="button" class="btn" data-dismiss="modal">Cancelar</button>
-              <button (click)="onUpdateEducacion(editForm.value)" type="button" class="btn" data-dismiss="modal">Guardar
+              <button id="update-educacion-modal" type="button" class="btn btn-light"
+                data-dismiss="modal">Cancelar</button>
+              <button (click)="onUpdateEducacion(editForm.value)" type="button" class="btn btn-primary"
+                data-dismiss="modal">Guardar
                 cambios</button>
             </div>
           </form>
@@ -156,20 +170,30 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel"></h5>
+          <h5 class="modal-title" id="staticBackdropLabel">Eliminar Item</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
+          <p>El ítem se eliminará permanentemente. ¿Desea borrarlo?</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-          <button (click)="onDeleteEducacion(deleteEducacion.id)" type="button" class="btn btn-primary"
-            data-dismiss="modal">Sí</button>
+
+          <div class="col-md-4 container">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <button (click)="onDeleteEducacion(deleteEducacion.id)" type="button" class="btn btn-primary"
+              data-dismiss="modal">Sí</button>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
 </div>
-<!-- Comienzo Modal Borrar -->
+<!-- Fin Modal Borrar -->
+<!--termina MODIFICA EDUCACION-->
+
+
+
+
