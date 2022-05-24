@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpContext } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Educacion } from '../entidades/educacion';
+import { Educacion } from 'src/app/interfaces/Educacion'
 import { environment } from 'src/environments/environment';
 import { config } from '../data/Config';
 
@@ -16,27 +16,26 @@ export class EducacionService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerDatosEducacion(): Observable<Educacion[]> {
-    return this.http.get<Educacion[]>(`${this.apiHerokuUrl}educacion/todas`);
+  public obtenerDatosEducacion(): Observable<Educacion[]> {
+    return this.http.get<Educacion[]>(`${this.apiHerokuUrl}educacion/all`);
   }
 
-  guardarNuevaEducacion(educacion:Educacion): Observable<Educacion> {
-    return this.http.post<Educacion>(this.apiHerokuUrl + "educacion/create", educacion);
+  public addEducacion(educacion:Educacion): Observable<Educacion> {
+    return this.http.post<Educacion>(`${this.apiHerokuUrl}educacion`, educacion);
   }
-
-  modificarEducacion(educacion: Educacion): Observable<any> {
-    return this.http.put<any>(this.apiHerokuUrl + "educacion/update", educacion);
-  }
-
-  borrarEducacion(id: number): Observable<any> {
-    return this.http.delete<any>(this.apiHerokuUrl + "educacion/" + id);
+  
+  public updateEducacion(educacion: Educacion): Observable<Educacion> {
+    return this.http.put<Educacion>(`${this.apiHerokuUrl}educacion/update`, educacion);
+  } 
+  public borrarEducacion(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiHerokuUrl}educacion/${id}`);
   }
   public getEducacion(): Observable<Educacion[]> {
-    return this.http.get<Educacion[]>(`${this.apiHerokuUrl}/educacion/all`);
+    return this.http.get<Educacion[]>(`${this.apiHerokuUrl}educacion/all`);
   }
  
-  public editarDatosEducacion(educacion:Educacion):Observable<any>{
-    return  this.http.put(this.url,educacion);
+  public editarDatosEducacion(educacion:Educacion):Observable<Educacion>{
+    return  this.http.put<Educacion>(this.url,educacion);
   }
   public obtenerUnaEducacion(){
     return this.http.get<any>(this.apiHerokuUrl + "educacion/1")

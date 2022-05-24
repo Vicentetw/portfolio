@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Educacion } from 'src/app/entidades/educacion';
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+/*import { FormBuilder, FormGroup, Validators } from '@angular/forms';*/
 import { EducacionService } from 'src/app/services/educacion.service';
-import { NgbConfig } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs';
+import { NgForm, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-modifica',
@@ -12,25 +14,76 @@ import { NgbConfig } from '@ng-bootstrap/ng-bootstrap';
   providers:[EducacionService]
 })
 export class ModificaComponent implements OnInit {
-  educacionList: Educacion[] = [];
+  
+  public educacionList: Educacion[] = [];
   isUserLogged!:boolean
+  formBorra=false;
+  formCarga=false;
+  formModifica=false;
+  educacionForm!: FormGroup;
+  public editEducacion!: Educacion;
+  public deleteEducacion!: Educacion;
 
-  educationForm: FormGroup;
-  constructor(public authService: AuthService, private educacionService: EducacionService, private formBuilder: FormBuilder,ngbConfig: NgbConfig) { 
-    this.educationForm = this.formBuilder.group({
+  constructor(public authService: AuthService, private educacionService: EducacionService) { 
+   /* this.educacionForm = FormGroup.group(
+      {
       id: [''],
-      fechaInicio: ['', [Validators.required]],
-      fechaEgreso: ['', [Validators.required]],
-      titulo: ['', [Validators.required]],
-      institucion: ['', [Validators.required]],
-      idPersona: ['', [Validators.required]]
-    });
+      fecha_inicio: [''],
+      fecha_egreso: ['', Validators.required],
+      titulo: ['', Validators.required],
+      institucion: ['', Validators.required],
+      idPersona: ['', Validators.required],
+    }
+    );
+    */
+
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
 
     this.isUserLogged = this.authService.estaLogeado;
+    this.getEducacion();
+  }
+
+  public getEducacion(): void {
+    this.educacionService.getEducacion().subscribe(
+      (response:Educacion[]) => {
+        this.educacionList = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public onAddEducacion(addForm: NgForm):void {
+    document.getElementById('add-educacion-modal')?.click();
+    this.educacionService.addEducacion(addForm.value).subscribe(
+      (response: Educacion) => {
+        console.log(response);
+        this.getEducacion();
+        addForm.reset();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        addForm.reset();
+      }
+    )
     
+  } 
+  /*save(event: Event) {
+    event.preventDefault();
+    if (this.educationForm.valid) {
+      const value = this.educationForm.value;
+      this.educacionService.addEducacion(value);
+      
+    } else {
+      this.educationForm.markAllAsTouched();
+    }
+  }
+  */
+ 
+ /*
     this.reloadData();
   }
   private reloadData() {
@@ -44,29 +97,32 @@ export class ModificaComponent implements OnInit {
   private clearForm() {
     this.educationForm.setValue({
       id: '',
-      fechaInicio: '',
-      fechaEgreso: '',
+      fecha_inicio: '',
+      fecha_egreso: '',
       titulo:'',
       institucion:'',
       idPersona: ''
     })
   }
-
-  private loadForm(educacion: Educacion) {
+*/
+/*
+  loadForm(educacion: Educacion) {
     this.educationForm.setValue({
       id: educacion.id,
-      fechaInicio: educacion.fechaInicio,
-      fechaEgreso: educacion.fechaEgreso,
+      fecha_inicio: educacion.fecha_inicio,
+      fecha_egreso: educacion.fecha_egreso,
       titulo: educacion.titulo,
       institucion: educacion.institucion,
       idPersona:educacion.idPersona
     })
+   
   }
-
+  */
+/*
   onSubmit() {
     let educacion: Educacion = this.educationForm.value;
     if (this.educationForm.get('id')?.value == '') {
-      this.educacionService.guardarNuevaEducacion(educacion).subscribe(
+      this.educacionService.addEducacion(educacion).subscribe(
         (newEducation: Educacion) => {
           this.educacionList.push(newEducation);
         }
@@ -85,9 +141,27 @@ export class ModificaComponent implements OnInit {
   }
 
   onEditEducation(index: number) {
-    let educacion: Educacion = this.educacionList[index];
-    this.loadForm(educacion);
+    let educacion: Educacion = this.educationForm.value;
+    if (confirm("¿Está seguro que desea modificar la educación seleccionada?")) {
+     this.educacionService.addEducacion(educacion).subscribe(
+      () => {
+        this.reloadData();
+      }
+    )
+  }  
   }
+
+  onNuevaEducation() {
+    let educacion: Educacion = this.educationForm.value;
+    if (confirm("¿Está seguro que desea modificar la educación seleccionada?")) {
+     this.educacionService.addEducacion(educacion).subscribe(
+      () => {
+        this.reloadData();
+      }
+    )
+  }  
+  }
+  
 
   onDeleteEducation(index: number) {
     let educacion: Educacion = this.educacionList[index];
@@ -99,4 +173,74 @@ export class ModificaComponent implements OnInit {
       )
     }
   }
+
+
+
+  
+  public onUpdateEducacion(editEducacion: Educacion):void {
+    this.educacionService.modificarEducacion(editEducacion).subscribe(
+    (response: Educacion) => {
+      console.log(response);
+      this.reloadData();
+      
+    }
+  )
+  
+}
+*/
+
+
+
+public onUpdateEducacion(educacion: Educacion):void {
+  this.educacionService.updateEducacion(educacion).subscribe(
+  (response: Educacion) => {
+    console.log(response);
+    this.getEducacion();
+    
+  },
+  (error: HttpErrorResponse) => {
+    alert(error.message);
+  }
+)
+
+}
+
+public onDeleteEducacion(id: number):void {
+  this.educacionService.borrarEducacion(id).subscribe(
+  (response: void) => {
+    console.log(response);
+    this.getEducacion();
+    
+  },
+  (error: HttpErrorResponse) => {
+    console.log(error.message);
+  }
+)
+
+}
+
+
+public onOpenModal(educacion: Educacion, mode: string): void{
+  const container = document.getElementById('main-container');
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.style.display = 'none';
+  button.setAttribute('data-toggle', 'modal');
+  if (mode === 'add') {
+    button.setAttribute('data-target', '#addEducacionModal');
+  }
+  if (mode === 'edit') {
+    this.editEducacion = educacion;
+    button.setAttribute('data-target', '#updateEducacionModal');
+  }
+  if (mode === 'delete') {
+    this.deleteEducacion = educacion;
+    button.setAttribute('data-target', '#deleteEducacionModal');
+  }
+  container?.appendChild(button);
+  button.click();
+}
+
+
+
 }

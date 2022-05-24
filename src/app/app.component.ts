@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 /* paso esto a portfolio.component
 import data from 'src\assets\data\persona.json';
 import { ApicallService } from './services/apicall.service';

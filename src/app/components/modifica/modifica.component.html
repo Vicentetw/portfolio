@@ -1,63 +1,175 @@
 <app-header class="image"></app-header>
-<!--aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
->
-<p>Number of modals: 1</p>
-<div *ngIf="!this.authService.estaLogeado">
-<h1 class="">Error! ***Debes estar logueado para realizar modificaciones***</h1>
-</div>
 
-<div *ngIf="this.authService.estaLogeado">
-<form  class="col-sm-10 formulario">
+<div *ngIf="this.isUserLogged">
   <div>
-  <div *ngFor="let educacion of educacionList; let i=index"  class="col-sm-6"  style="background-color:#aaa">
+    <div class="contenido" id="main-container">
+      <div id="educacion">
+        <h4 class="educacion"> Educacion
+          <button class="btn btn-success" (click)="onOpenModal(null!,'add')" *ngIf="this.isUserLogged"><span
+              class="btn-primary"></span> Agregar</button>
+        </h4>
+        <div class="container">
+          <div class="columnas" *ngFor="let e of educacionList">
+            <div class="datoseducacion">
 
-    <div class="row mb-3 m-1">
-      <label for="inputEmail3" class="col-sm-2 col-form-label">ID</label>
-      <div class="col-sm-10">
-        <td>{{educacion.id}}</td> 
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="inputPassword3" class="col-sm-2 col-form-label">Fecha inicio</label>
-      <div class="col-sm-10">
-        <td>{{educacion.fechaInicio}}</td>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="inputPassword3" class="col-sm-2 col-form-label">Fecha Egreso</label>
-      <div class="col-sm-10">
-        <td>{{educacion.fechaEgreso}}</td>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="inputPassword3" class="col-sm-2 col-form-label">Título</label>
-      <div class="col-sm-10">
-        <td>{{educacion.titulo}}</td>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="inputPassword3" class="col-sm-2 col-form-label">Institución</label>
-      <div class="col-sm-10">
-        <td>{{educacion.institucion}}</td>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="inputPassword3" class="col-sm-2 col-form-label">IdPersona</label>
-      <div class="col-sm-10">
-        <td>{{educacion.idPersona}}</td>
-      </div>
-    </div>
-    <div class="m-2 float-left p-2">
-      <button type="submit" class="btn btn-danger" (click)="onDeleteEducation">Borrar</button>
-      <button type="submit" class="btn btn-dark" (click)="onEditEducation">Editar</button>
-     </div>
-   
-  </div> 
-    
-  </div> 
+              <p><span class="titulo">{{e.titulo}}</span>
+                <br>
+                <br> {{e.institucion}}
+                <br>
+                <br> {{e.fecha_egreso}}
+                <br> {{e.fecha_inicio}}
 
-  </form>
+
+              </p>
+              <span id="eliminar-editar-educacion" *ngIf="this.isUserLogged">
+                <button type="button" class="botones_editar_borrar" (click)="onOpenModal(e,'edit')">
+                  <i class="fa-solid fa-pen"></i>Editar
+                </button>
+                <button (click)="onOpenModal(e,'delete')" type="button" class="botones_editar_borrar">
+                  <i class="fa-solid fa-eraser"></i> borrar
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Modal para agregar Experiencia -->
+  <div class="modal fade" id="addEducacionModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="addExperienciaModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Agregar Educacion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+                    </button>
+        </div>
+        <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="onAddEducacion(addForm)">
+  <!--
+            <div class="form-group">
+              <div class="input-group">
+                <label for="fecha_inicio">Fecha Inicio</label><br>
+                <input ngModel type="text" name="fecha_inicio" id="fecha_inicio" class="form-control" ngbDatepicker #d="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-primary calendar mt-2" (click)="d.toggle()" type="button">Cagar Fecha
+                    inicio</button>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <div class="input-group">
+                <label for="fecha_egreso">Fecha Egreso </label><br>
+                <input ngModel type="text" id="fecha_egreso" name="fecha_egreso" class="form-control" ngbDatepicker #c="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-primary calendar mt-2" (click)="c.toggle()" type="button">Cagar Fecha
+                    egreso</button>
+                </div>
+              </div>
+            </div>
+          -->
+          <label for="id"  type="hidden">Id</label><br>
+          <input ngModel type="number hidden" id="id" name="id"    class="form-control">
+          <label for="fecha_inicio">Fecha Inicio</label><br>
+          <input ngModel type="text" id="fecha_inicio" name="fecha_inicio" placeholder="yyyy-mm-dd"   class="form-control">
+          <label for="fecha_egreso">Fecha egreso</label><br>
+          <input ngModel type="text" id="fecha_egreso" name="fecha_egreso" placeholder="yyyy-mm-dd" class="form-control">
+            <label for="titulo">Título</label><br>
+            <input ngModel type="text" id="titulo" name="titulo" class="form-control">
+            <label for="institucion">Institucion</label><br>
+            <input ngModel type="text" id="institucion" name="institucion" class="form-control">
+            <label for="idPersona">Id Persona</label><br>
+            <input ngModel type="number" name="idPersona" id="idPersona" class="form-control">
+            <div class="modal-footer">
+              <button type="button" id="add-educacion-modal" class="btn btn-primary"
+                data-dismiss="modal">Cancelar</button>
+              <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Agregar</button>
+            </div>
+          </form>
+          <pre>{{addForm.value | json}}</pre>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Inicio modal editar -->
+
+
+  <div class="modal fade" id="updateEducacionModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="updateEducacionModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Editar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #editForm="ngForm">
+            <label type="hidden" for="id">ID</label><br>
+            <input type="hidden" ngModel="{{editEducacion?.id}} " type="number" id="id" name="id" class="form-control">
+            <label for="fecha_inicio">Fecha inicio</label><br>
+            <input ngModel="{{editEducacion?.fecha_inicio}} " type="text" id="fecha_inicio" name="fecha_inicio" class="form-control">
+            <label for="fecha_egreso">Fecha egreso</label><br>
+            <input ngModel="{{editEducacion?.fecha_egreso}}" type="text" id="fecha_egreso" name="fecha_egreso" class="form-control">
+            <label for="titulo">Título</label><br>
+            <input ngModel="{{editEducacion?.titulo}}" type="text" id="titulo" name="titulo" class="form-control">
+            <label for="institucion">Institucion</label><br>
+            <input ngModel="{{editEducacion?.institucion}}" type="text" id="institucion" name="institucion" class="form-control">
+            <label for="idPersona">Id Persona</label><br>
+            <input ngModel="{{editEducacion?.idPersona}}" type="number" id="idPersona" name="idPersona" class="form-control">
+            <input type="hidden" name="id" ngModel="{{editEducacion?.id}} "><br>
+            <div class="modal-footer">
+              <button id="update-educacion-modal" type="button" class="btn" data-dismiss="modal">Cancelar</button>
+              <button (click)="onUpdateEducacion(editForm.value)" type="button" class="btn" data-dismiss="modal">Guardar
+                cambios</button>
+            </div>
+          </form>
+          <pre>{{editForm.value | json}}</pre>
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+  <!-- Fin Modal modificar -->
+  <!-- Una semana peleando con modal y era error de dependencias -->
+
+  <!-- Comienzo Modal Borrar -->
+  <div class="modal fade" id="deleteEducacionModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="deleteEducacionModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+          <button (click)="onDeleteEducacion(deleteEducacion.id)" type="button" class="btn btn-primary"
+            data-dismiss="modal">Sí</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
+<!-- Comienzo Modal Borrar -->
