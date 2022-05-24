@@ -1,6 +1,8 @@
-<app-header class="image"></app-header>
-<!--MODICICA EDUCACION-->
-
+<app-header class="image"><app-home-button></app-home-button></app-header>
+<!--Boton home-->
+<div>
+  <app-home-button></app-home-button>
+</div>
 
 
 
@@ -9,9 +11,11 @@
   <div>
     <div class="contenido" id="main-container">
       <div id="educacion">
-        <h4 class="educacion"> Educacion
+        <h4 class="educacion"> Educacion 
+          
           <button ngbTooltip="Agregar educación" class="btn btn-success" (click)="onOpenModal(null!,'add')"
             *ngIf="this.isUserLogged"><span class="btn-primary"></span> Agregar educacion</button>
+            
         </h4>
         <div class="container">
           <div class="columnas" *ngFor="let e of educacionList">
@@ -95,8 +99,8 @@
             <input ngModel type="text" id="titulo" name="titulo" class="form-control">
             <label for="institucion">Institucion</label><br>
             <input ngModel type="text" id="institucion" name="institucion" class="form-control">
-            <label for="idPersona">Id Persona</label><br>
-            <input ngModel type="number" name="idPersona" id="idPersona" class="form-control">
+            <label for="persona_id">Id Persona</label><br>
+            <input ngModel type="number" name="persona_id" id="persona_id" class="form-control">
             <div class="modal-footer">
               <button type="button" id="add-educacion-modal" class="btn btn-primary"
                 data-dismiss="modal">Cancelar</button>
@@ -140,8 +144,8 @@
             <label for="institucion">Institucion</label><br>
             <input ngModel="{{editEducacion?.institucion}}" type="text" id="institucion" name="institucion"
               class="form-control">
-            <label for="idPersona">Id Persona</label><br>
-            <input ngModel="{{editEducacion?.idPersona}}" type="number" id="idPersona" name="idPersona"
+            <label for="persona_id">Id Persona</label><br>
+            <input ngModel="{{editEducacion?.persona_id}}" type="number" id="persona_id" name="persona_id"
               class="form-control">
             <input type="hidden" name="id" ngModel="{{editEducacion?.id}} "><br>
             <div class="modal-footer">

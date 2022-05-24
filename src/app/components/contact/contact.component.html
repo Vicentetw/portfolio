@@ -1,15 +1,14 @@
-<ng-container *ngIf=""><button type="button" class="btn btn-light btn-circle btn-sm">editar</button></ng-container>
+
 <p *ngIf="this.persona">
-Persona:<br>
-Nombre:{{this.persona.nombre}}<br>
-Apellido:{{this.persona.apellido}}<br>
-Documento:{{this.persona.dni}}<br>
-Nacionalidad:{{this.persona.nacionalidad.nombre}}<br>
-Experiencia:{{this.persona.id_experiencia}}<br>
-Fecha de Nacimiento:{{this.persona.fecha_nacimiento}}
+Datos de Autor para Argentina Programa grupo 141:<br>
+Nombre: {{this.persona.nombre}}<br>
+Apellido: {{this.persona.apellido}}<br>
+Documento: {{this.persona.dni}}<br>
+<a href="mailto:{{this.email}}">Contactar por email</a>
+
 
 </p>
 <p *ngIf="!this.persona">
-    <span style="border: 4px solid red; color:red; font-size: large">no hay persona que se esté cargando desde la base</span>
+    <span style="border: 4px solid red; color:red; font-size: large">...Esperando datos del servidor</span>
 
 </p>

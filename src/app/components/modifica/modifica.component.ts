@@ -31,7 +31,7 @@ export class ModificaComponent implements OnInit {
       fecha_egreso: ['', Validators.required],
       titulo: ['', Validators.required],
       institucion: ['', Validators.required],
-      idPersona: ['', Validators.required],
+      persona_id: ['', Validators.required],
     }
     );
     */

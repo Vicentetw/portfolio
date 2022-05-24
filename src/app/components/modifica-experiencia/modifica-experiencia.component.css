@@ -1,3 +1,5 @@
+
+
 * {
     margin: 0;
     padding: 0;
@@ -20,14 +22,14 @@
     
 }
 
-#skill{
+#experiencia{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 
-#skill h4 {
+#experiencia h4 {
     font-size: 25px;
     font-weight: bolder;
     color: #6C63FF;
@@ -40,12 +42,12 @@
     
 }
 
-#skill h4 button {
+#experiencia h4 button {
     text-align: right;
 }
 
 
-.skill {
+.experiencia {
     justify-items:right;
     padding: 5px;
     width: 90%;
@@ -69,7 +71,7 @@
     width: 90%;
 }
 
-.datosskill {
+.datosexperiencia {
     width: 100%;
     height: 100%;
     display: flex;
@@ -82,12 +84,12 @@
     transition: 0.4s;
 }
 
-.datosskill:hover {
+.datosexperiencia:hover {
     box-shadow: 2px 14px 15px #6C63FF;
     transition: 0.2s;
 }
 
-.datosskill p {
+.datosexperiencia p {
     width: 80%;
     height: 80%;
     text-align: center;
@@ -101,7 +103,7 @@
     
 }
 
-.logoskill {
+.logoexperiencia {
     width: 25%;
     border-radius: 50%;
 }
@@ -112,7 +114,7 @@
 }
 
 
-#eliminar-editar-skill {
+#eliminar-editar-experiencia {
     display: flex;
     font-size: 10px;
     height: 100%;
@@ -181,7 +183,7 @@ i {
     border: none;
 }
 
-/* contenido skill */
+/* contenido experiencia */
 
 
 
@@ -258,8 +260,8 @@ i {
     width: 100%;
 }
 
-#update-skill-modal {
+#update-experiencia-modal {
     padding: 3px 5px;
     color: #060525;
 }
-/****css para skill***/
+/****css para experiencia***/

@@ -11,6 +11,7 @@ import { Config } from 'firebase/auth';
 export class ContactComponent implements OnInit {
 //public persona= {nombre:"hardcoded", apellido:"Perrotta"}
 public persona: any
+email="perrottavicente@gmail.com"
 
   constructor(private service:PersonaService) { 
      
